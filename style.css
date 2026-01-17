@@ -261,39 +261,50 @@ body {
     /* your existing styles for color and alignment */
 }
 
+/* The invisible wrapper that positions the modal */
 #help-modal {
     display: none;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #ffffff;
-    padding: 15px; /* Reduced padding to allow button to sit in corner */
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    width: 90%;      /* Adjust this to 100% if you want it to fill the whole screen */
+    max-width: 600px;
+    height: 80vh;    /* Fixed height so it scrolls internally */
     z-index: 1000;
-    width: 85%;
-    max-width: 450px;
-    max-height: 80vh; 
-    overflow-y: auto;
+    background: transparent;
 }
 
-/* Floating "Close ✕" Pill Button */
+/* The actual Black Box that fills the wrapper */
+#help-content {
+    background-color: #121212; 
+    color: #e0e0e0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    border: 1px solid #444;
+    box-sizing: border-box; /* Crucial: includes padding in width/height */
+    padding: 0;             /* We will put padding on the inner sections instead */
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.9);
+}
+
+/* The floating close button stays at the top right */
 .close-help-btn {
     position: sticky;
-    top: 0;
+    top: 15px;
+    right: 15px;
     float: right;
-    background: #dc3545; /* Red to match your main action buttons */
+    background: #dc3545;
     color: white;
     border: none;
     border-radius: 20px;
-    padding: 5px 15px;
+    padding: 8px 16px;
     font-weight: bold;
-    font-size: 0.8rem;
     cursor: pointer;
     z-index: 1001;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    margin-bottom: 10px;
+    margin-right: 15px; /* Spacing from the scrollbar */
 }
 
 /* Body container to ensure content doesn't hide under the sticky button */
