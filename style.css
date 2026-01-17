@@ -99,17 +99,42 @@ body {
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.8); 
 }
 .hand {
-   background: #ffffff; /* Change hands to white */
-    border: 1px solid #000; /* Thin black border so they show on the white/gold sections */
-    box-shadow: 0 0 4px rgba(255, 255, 255, 0.5); /* Slight outer glow */
+    position: absolute;
+    bottom: 50%; /* Anchor bottom of hand to clock center */
+    left: 50%;
+    transform-origin: bottom center; /* Pivot point at the center dot */
+    background: #ffffff;
+    border: 1px solid #000;
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+    z-index: 5;
 }
-
 .hour-hand { width: 6px; height: 40px; margin-left: -3px; }
 .min-hand { width: 4px; height: 60px; margin-left: -2px; }
 
 .sec-hand {
-    background: var(--vivid-red) !important;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    width: 2px;
+    height: 65px;
+    background: #ff4d4d !important;
+    transform-origin: bottom center;
+    margin-left: -1px;
+    z-index: 6;
     box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.9);
+}
+
+.dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
 }
 
 /* DIGITAL CLOCK (Red text) */
