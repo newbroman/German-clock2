@@ -294,22 +294,18 @@ async function toggleHelp() {
     
     try {
         const response = await fetch(helpFile);
-        if (!response.ok) throw new Error('Help file not found');
         const html = await response.text();
         
-        // Wrap the fetched content with only the top floating button
+        // Injecting the Close Button and Title directly into the black box
         helpContent.innerHTML = `
             <button class="close-help-btn" onclick="toggleHelp()">Close ✕</button>
-            <div class="help-scroll-body">${html}</div>
+            <h2 style="text-align:center; margin-top:0; padding-top:10px;">Guide / Anleitung</h2>
+            ${html}
         `;
         
         modal.style.display = 'block';
     } catch (err) {
-        helpContent.innerHTML = `
-            <button class="close-help-btn" onclick="toggleHelp()">Close ✕</button>
-            <p>Help content unavailable.</p>
-        `;
-        modal.style.display = 'block';
+        console.error("Help load error:", err);
     }
 }
 
