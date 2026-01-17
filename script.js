@@ -287,12 +287,17 @@ function manualTime(val) {
 async function toggleHelp() {
     const modal = document.getElementById('help-modal');
     if (modal.style.display === 'block') { modal.style.display = 'none'; return; }
-    const helpFile = currentLang === 'PL' ? 'help_pl.html' : 'help_en.html';
+
+    // If currentLang is DE, load help_de.html; otherwise help_en.html
+    const helpFile = (currentLang === 'DE') ? 'help_de.html' : 'help_en.html';
+
     try {
         const r = await fetch(helpFile);
         document.getElementById('help-content').innerHTML = await r.text();
         modal.style.display = 'block';
-    } catch (e) { modal.style.display = 'block'; }
+    } catch (e) { 
+        console.error("Help file not found");
+    }
 }
 
 function toggleLang() {
