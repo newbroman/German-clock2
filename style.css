@@ -179,10 +179,11 @@ body {
 /* BUTTONS & CONTROLS */
 
 .setting-row {
-    margin: 15px 0;
     display: flex;
-    gap: 20px;
-    font-weight: 500;
+    justify-content: center;
+    gap: 30px;
+    margin: 15px 0;
+    font-family: sans-serif;
 }
 
 .btn-sub {
@@ -200,14 +201,15 @@ body {
 /* Main Action Buttons (80% scale feel preserved) */
 .btn-real, .btn-main {
     width: 100%;
-    max-width: 300px;
-    padding: 10px;
-    margin: 4px 0;
-    border-radius: 8px; /* Matches screenshot radius */
+    max-width: 320px;
+    padding: 12px;
+    margin: 6px 0;
+    border-radius: 10px; /* Matching the screenshot's soft corners */
     border: none;
     font-weight: bold;
     color: white;
-    text-transform: uppercase;
+    font-size: 0.9rem;
+    cursor: pointer;
 }
 
 .btn-real { background-color: #007bff; } /* Blue as seen in image */
@@ -218,17 +220,19 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: 10px;
     width: 100%;
-    max-width: 300px;
+    max-width: 320px;
     margin-top: 10px;
 }
 
 .audio-row .btn-sub {
+    flex: 1;
     background: white !important;
-    border: 1px solid #666;
-    border-radius: 8px;
     color: #333;
-    padding: 8px;
-    font-size: 0.9rem;
+    border: 1px solid #999;
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 0.85rem;
 }
 
 /* QUIZ OPTIONS */
@@ -263,12 +267,12 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: white;
-    padding: 20px;
-    border: 2px solid #333;
-    border-radius: 12px;
-    z-index: 100;
-    width: 80%;
-    max-width: 400px;
+    background: #ffffff;
     color: #333;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 1000;
+    width: 85%;
+    max-width: 450px;
 }
