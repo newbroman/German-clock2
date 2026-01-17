@@ -268,35 +268,36 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     background: #ffffff;
-    color: #333;
-    padding: 25px;
+    padding: 15px; /* Reduced padding to allow button to sit in corner */
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     z-index: 1000;
     width: 85%;
     max-width: 450px;
-    /* FIX: Enable scrolling */
     max-height: 80vh; 
     overflow-y: auto;
-    -webkit-overflow-scrolling: touch; /* Smooth scroll for mobile */
 }
 
-/* Floating Close Button */
+/* Floating "Close ✕" Pill Button */
 .close-help-btn {
-    position: sticky; /* Floats at the top of the modal content */
+    position: sticky;
     top: 0;
     float: right;
-    background: #dc3545;
+    background: #dc3545; /* Red to match your main action buttons */
     color: white;
     border: none;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    border-radius: 20px;
+    padding: 5px 15px;
     font-weight: bold;
+    font-size: 0.8rem;
     cursor: pointer;
     z-index: 1001;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    margin-bottom: 10px;
+}
+
+/* Body container to ensure content doesn't hide under the sticky button */
+.help-scroll-body {
+    clear: both;
+    padding-top: 5px;
 }
