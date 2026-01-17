@@ -1,6 +1,6 @@
-const CACHE_NAME = 'polish-clock-v86 ';
+const CACHE_NAME = 'polish-clock-v87 ';
 // IMPORTANT: Update this to your GitHub repository name
-const GH_PATH = '/Polish-clock'; 
+const GH_PATH = '/German-clock2'; 
 
 const ASSETS = [
   `${GH_PATH}/`,
@@ -8,7 +8,7 @@ const ASSETS = [
   `${GH_PATH}/styles.css`,
   `${GH_PATH}/script.js`,
   `${GH_PATH}/help_en.html`,
-  `${GH_PATH}/help_pl.html`,
+  `${GH_PATH}/help_de.html`,
   `${GH_PATH}/manifest.json`
 ];
 
