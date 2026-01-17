@@ -291,20 +291,33 @@ body {
 }
 
 /* The floating close button stays at the top right */
+/* Floating Close Button inside the Black Box */
 .close-help-btn {
     position: sticky;
-    top: 15px;
-    right: 15px;
-    float: right;
-    background: #dc3545;
+    top: 10px;      /* Distance from the top of the scrollable area */
+    right: 10px;    /* Distance from the right edge */
+    float: right;   /* Keeps it aligned to the right */
+    background: #dc3545; /* Red accent color */
     color: white;
     border: none;
     border-radius: 20px;
     padding: 8px 16px;
     font-weight: bold;
+    font-size: 0.85rem;
     cursor: pointer;
-    z-index: 1001;
-    margin-right: 15px; /* Spacing from the scrollbar */
+    z-index: 1001; /* Ensures it stays above the table content */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: background 0.2s ease;
+}
+
+.close-help-btn:hover {
+    background: #c82333;
+}
+
+/* Ensure the title doesn't get overlapped by the floating button */
+#help-content h2 {
+    clear: both;
+    padding-top: 5px;
 }
 
 /* Body container to ensure content doesn't hide under the sticky button */
