@@ -56,6 +56,7 @@ function init() {
 }
 
 function updateDisplay(syncInput) {
+    // 1. Hands Alignment
     const hRotation = ((hours % 12) * 30) + (minutes * 0.5);
     const mRotation = minutes * 6;
     const sRotation = seconds * 6;
@@ -68,20 +69,18 @@ function updateDisplay(syncInput) {
     const timeStr = `${pad(hours)}:${pad(minutes)}${showSec ? ':' + pad(seconds) : ''}`;
     if (syncInput) document.getElementById('time-input-display').value = timeStr;
 
-    // 2. German Text Logic
+    // 2. German Grammar Logic
     const isFormal = document.getElementById('formal').checked;
     let p = "", ph = "", e = "";
     let sStr = (showSec && seconds > 0) ? ` und <span class="cardinal-num">${mAll[seconds]}</span> Sekunden` : "";
 
     if (isFormal) {
-        // Formal: "Es ist [Hour] Uhr [Minute]"
         let mStr = minutes === 0 ? "" : mAll[minutes];
         let mCard = minutes > 0 ? ` <span class="cardinal-num">${mStr}</span>` : "";
         p = `Es ist <span class="nom-case">${hNom[hours]}</span> Uhr${mCard}${sStr}`;
         ph = `es ist ${hNomPh[hours]} oor ${mAllPh[minutes]}`;
         e = `${pad(hours)}:${pad(minutes)}`;
     } else {
-        // Casual: 12h clock
         let h12 = hours % 12;
         let nextH = (hours + 1) % 12 || 12;
         let displayH = h12 || 12;
@@ -92,7 +91,7 @@ function updateDisplay(syncInput) {
             ph = `es ist ${hNomPh[h12]}`;
             e = hours === 0 ? "Midnight" : hours === 12 ? "Noon" : `${displayH} o'clock`;
         } else if (minutes < 30) {
-            // [cite: 2026-01-10] Use fünfzehn, not Viertel
+            // [cite: 2026-01-10] No kwadrans/Viertel
             p = `<span class="cardinal-num">${mAll[minutes]}</span> nach <span class="nom-case">${hNom[h12]}</span>${sStr}`;
             ph = `${mAllPh[minutes]} nakh ${hNomPh[h12]}`;
             e = `${minutes} past ${displayH}`;
@@ -108,7 +107,7 @@ function updateDisplay(syncInput) {
         }
     }
 
-    // 3. UI Update (Using generic lang-text ID)
+    // 3. UI Update (Using generic ID 'lang-text')
     const d = dict[currentLang];
     const pt = document.getElementById('lang-text'); 
     const pht = document.getElementById('phonetic-text');
