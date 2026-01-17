@@ -4,6 +4,7 @@ root {
     --germany-black: #000000;
     --germany-red: #FF0000;
     --germany-gold: #FFCC00;
+    --nom-color: #e67e22;
     
     /* CLOCK FACE GRADIENT */
     --clock-face: linear-gradient(
