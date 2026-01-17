@@ -3,13 +3,13 @@
         width: 100%;
         border-collapse: collapse;
         margin: 20px 0;
-        font-size: 0.9rem;
-        text-align: center;
+        font-size: 0.9rem; /* Tidier font size */
+        text-align: center; /* Centered content */
     }
 
     #help-content th {
-        background-color: transparent;
-        border-bottom: 2px solid var(--germany-gold); /* Using the Flag Gold */
+        background-color: transparent; /* Transparent header for all modes */
+        border-bottom: 2px solid #dee2e6;
         padding: 12px;
         text-align: center;
     }
@@ -21,78 +21,92 @@
     }
 
     /* Grammar Colors */
-    .cardinal-num { color: #3498db; font-weight: bold; } /* Blue for Minutes */
-    .nom-case { color: var(--nom-color); font-weight: bold; } /* Orange for Hours */
-    .flag-logic { font-style: italic; opacity: 0.8; font-size: 0.8rem; }
+    .cardinal-num { color: #3498db; font-weight: bold; } /* Blue */
+    .nom-case { color: var(--nom-color); } /* Orange */
+    .gen-case { color: var(--gen-color); } /* Purple */
 </style>
 
 <div class="help-sect">
     <h3>📱 How to Use</h3>
     <ul>
-        <li><b>The Flag Face:</b> The clock is the German Flag. ⬛ Black (Top), 🟥 Red (Middle), 🟨 Gold (Bottom).</li>
-        <li><b>Drag the Hands:</b> Move hands to change time. German logic updates automatically.</li>
-        <li><b>Startup Mode:</b> Casual mode is active by default.</li>
-        <li><b>Meeting Button:</b> Shows formal time by default (e.g., "Es ist vierzehn Uhr...").</li>
-        <li><b>Quiz Mode:</b> Pick the correct German phrase. <span style="color:#28a745">Green</span> is correct, <span style="color:#dc3545">Red</span> is wrong.</li>
+        <li><b>Drag the Hands:</b> Move the clock hands to change the time.</li>
+        <li><b>Manual Entry:</b> Type a time (e.g., 14:20) in the box.</li>
+        <li><b>EN/PL:</b> Switch the interface and help language.</li>
+        <li><b>Phon:</b> Toggle the phonetic "sounds-like" guide.</li>
+        <li><b>Quiz Mode:</b> Test yourself! Pick the correct Polish phrase for the time shown on the clock. The buttons are color-coded: <span style="color:#28a745">Green</span> for correct, <span style="color:#dc3545">Red</span> for wrong.</li>
     </ul>
 </div>
 
 <div class="help-sect">
     <h3>👔 <span class="nom-case">Formal</span> Grammar (24h)</h3>
-    <p>Used for schedules, radio, and airports. Very simple: <b>Hour + "Uhr" + Minutes</b>.</p>
+    <p>Used for official schedules and digital clocks. It is mathematically precise.</p>
     <table class="help-table">
         <thead>
             <tr>
-                <th>Time</th>
-                <th>German Format</th>
-                <th>Literal Translation</th>
+                <th>Part</th>
+                <th>Number Type</th>
+                <th>Case</th>
+                <th>Example</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>14:10</td>
-                <td><span class="nom-case">vierzehn</span> Uhr <span class="cardinal-num">zehn</span></td>
-                <td>14 o'clock 10</td>
+                <td><span class="nom-case">Hour</span></td>
+                <td><b class="nom-case">Ordinal</b></td>
+                <td class="nom-case">Nominative (Orange)</td>
+                <td><span class="nom-case">Godzina</span> <span class="nom-case">siedemnasta</span></td>
             </tr>
             <tr>
-                <td>08:45</td>
-                <td><span class="nom-case">acht</span> Uhr <span class="cardinal-num">fünfundvierzig</span></td>
-                <td>8 o'clock 45</td>
+                <td><span class="cardinal-num">Minute</span></td>
+                <td><b class="cardinal-num">Cardinal</b></td>
+                <td><span class="cardinal-num">Blue</span></td>
+                <td><span class="cardinal-num">dziesięć</span> (17:10)</td>
             </tr>
         </tbody>
     </table>
 </div>
 
 <div class="help-sect">
-    <h3>☕ <span class="nom-case">Casual</span> Grammar (12h)</h3>
-    <p>Daily conversation. Just like Polish, German "looks forward" to the next hour at the half-hour mark.</p>
+    <h3>☕ <span class="gen-case">Casual</span> Grammar (12h)</h3>
+    <p>Used in daily conversation. The <span class="nom-case">hour</span> changes ending based on the word before it.</p>
     <table class="help-table">
         <thead>
             <tr>
-                <th>Type</th>
-                <th>German Phrase</th>
-                <th>English / Polish Logic</th>
+                <th>Word Used</th>
+                <th>Number Type</th>
+                <th>Case Used</th>
+                <th>Example</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td><b>Nach</b> (Past)</td>
-                <td><span class="cardinal-num">zehn</span> <b>nach</b> <span class="nom-case">vier</span></td>
-                <td>10 past 4</td>
+                <td>(On the <span class="nom-case">hour</span>)</td>
+                <td><b class="nom-case">Ordinal</b></td>
+                <td class="nom-case">Nominative (Orange)</td>
+                <td><span class="nom-case">Czwarta</span> (4:00)</td>
             </tr>
             <tr>
-                <td><b>Halb</b> (Half)</td>
-                <td><b>halb</b> <span class="nom-case">fünf</span></td>
-                <td>Halfway to 5 <br><span class="flag-logic">(Polish: wpół do piątej)</span></td>
+                <td><b class="gen-case">Po</b> (Past)</td>
+                <td><b class="nom-case"></b></td>
+                <td class="gen-case">Genitive (Purple)</td>
+                <td><span class="cardinal-num">pięć</span> <span class="gen-case">po</span> <span class="gen-case">czwartej</span> (4:05)</td>
             </tr>
             <tr>
-                <td><b>Vor</b> (To)</td>
-                <td><span class="cardinal-num">zehn</span> <b>vor</b> <span class="nom-case">fünf</span></td>
-                <td>10 to 5</td>
+                <td><b class="gen-case">Wpół do</b> (Half)</td>
+                <td><b class="nom-case"></b></td>
+                <td class="gen-case">Genitive (Purple)</td>
+                <td><span class="gen-case">wpół do</span> <span class="gen-case">piątej</span> (4:30)</td>
+            </tr>
+            <tr>
+                <td><b class="nom-case">Za</b> (To)</td>
+                <td><b class="nom-case"></b></td>
+                <td class="nom-case">Nominative (Orange)</td>
+                <td><span class="nom-case">za</span> <span class="cardinal-num">pięć</span> <span class="nom-case">piąta</span> (4:55)</td>
             </tr>
         </tbody>
     </table>
     <p>
-        <small>*Note: We strictly use <b>cardinal</b> numbers. We say <b class="cardinal-num">fünfzehn</b> (15) instead of quarters [cite: 2026-01-10].</small>
+        <small>*Note: <span class="cardinal-num">minutes</span> are always 
+        <b class="cardinal-num">cardinal</b> numbers in <span class="gen-case">casual</span> mode.</small>
     </p>
 </div>
