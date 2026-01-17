@@ -1,0 +1,188 @@
+/* VARIABLES & THEMES - Now with German Grammar Colors */
+root {
+    /* GERMAN FLAG COLORS */
+    --germany-black: #000000;
+    --germany-red: #FF0000;
+    --germany-gold: #FFCC00;
+    
+    /* CLOCK FACE GRADIENT */
+    --clock-face: linear-gradient(
+        to bottom, 
+        var(--germany-black) 0%, 
+        var(--germany-black) 33.3%, 
+        var(--germany-red) 33.3%, 
+        var(--germany-red) 66.6%, 
+        var(--germany-gold) 66.6%, 
+        var(--germany-gold) 100%
+    );
+
+    /* UI THEME COLORS */
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --accent: #ff4d4d;
+    --nom-color: #ff9f43;    /* Hour color */
+    --cardinal-color: #3498db; /* Minutes color */
+    --btn-sub-border: #444;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #121212;
+        --text-color: #e0e0e0;
+        --container-bg: #1e1e1e;
+        --accent: #ff4d4d;
+        --nom-color: #ff9f43;
+        --cardinal-color: #5dade2;
+        --btn-sub-border: #444;
+    }
+
+    #quiz-options button {
+        background-color: var(--bg-color) !important;
+        color: #ffffff !important;
+        border: 1px solid var(--btn-sub-border) !important;
+    }
+}
+
+/* LAYOUT */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    font-family: -apple-system, sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+/* 145px CLOCK FACE (66% size preservation) */
+#clock-container {
+    width: 145px;
+    height: 145px;
+    border: 5px solid var(--text-color);
+    border-radius: 50%;
+    position: relative;
+    background: var(--clock-face); /* Applies the flag colors */
+    margin: 10px 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    overflow: hidden; /* Ensures the flag doesn't bleed out */
+}
+.mark {
+    background-color: #ffffff !important; /* Pure white for the black stripe */
+    opacity: 1;
+    position: absolute;
+    width: 2px;
+    height: 10px; /* Slightly longer for better visibility */
+    left: 50%;
+    margin-left: -1px;
+    transform-origin: 1px 72.5px; /* Centers for 145px clock */
+    z-index: 2;
+    /* This shadow ensures they are visible even on the yellow/gold stripe */
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.8); 
+}
+.hand {
+   background: #ffffff; /* Change hands to white */
+    border: 1px solid #000; /* Thin black border so they show on the white/gold sections */
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.5); /* Slight outer glow */
+}
+
+.hour-hand { width: 6px; height: 40px; margin-left: -3px; }
+.min-hand { width: 4px; height: 60px; margin-left: -2px; }
+
+.sec-hand {
+    background: var(--vivid-red) !important;
+    box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.9);
+}
+
+/* DIGITAL CLOCK (Red text) */
+#time-input-display {
+    color: #ff4d4d !important;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: 1px solid #dc3545;
+    border-radius: 5px;
+    padding: 5px;
+    background: transparent;
+    text-align: center;
+    width: 8rem;
+    margin: 15px 0;
+    outline: none;
+    font-family: 'Courier New', monospace;
+}
+
+/* GERMAN PHRASE FORMATTING */
+.display-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    margin: 10px 0;
+    min-height: 110px;
+}
+
+#german-text {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 4px;
+    width: 100%;
+    word-wrap: break-word; /* Essential for long German words */
+}
+
+.nom-case { color: var(--nom-color) !important; font-weight: bold; }
+.cardinal-num { color: var(--cardinal-color) !important; font-weight: bold; }
+#english-text { opacity: 0.6; font-style: italic; margin-top: 5px; font-size: 1rem; }
+
+/* BUTTONS & CONTROLS */
+.btn-sub {
+    background-color: var(--bg-color) !important;
+    color: var(--text-color);
+    border: 1px solid var(--btn-sub-border);
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.top-row { display: grid; grid-template-columns: repeat(5, 1fr); width: 100%; gap: 5px; }
+.top-row button { padding: 5px 0; font-size: 0.7rem; }
+
+/* Main Action Buttons (80% scale feel preserved) */
+.btn-real, .btn-main {
+    width: 100%;
+    padding: 12px; 
+    margin: 5px 0;
+    border-radius: 12px;
+    border: none;
+    font-weight: bold;
+    color: white;
+}
+.btn-real { background-color: #007bff; }
+.btn-main { background-color: #dc3545; }
+
+/* QUIZ OPTIONS */
+#quiz-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+#app-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--accent);
+    text-shadow: 0 0 10px rgba(255, 49, 49, 0.5);
+    margin-bottom: 20px;
+    text-align: center;
+}

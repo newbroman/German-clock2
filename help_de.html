@@ -1,0 +1,128 @@
+<style>
+    #help-content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 0.9rem;
+        text-align: center;
+    }
+
+    #help-content th {
+        background-color: transparent;
+        border-bottom: 2px solid #FFCC00; /* German Gold */
+        padding: 12px;
+        text-align: center;
+    }
+
+    #help-content td {
+        padding: 10px;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+        text-align: center;
+    }
+
+    /* Grammar Colors */
+    .cardinal-num { color: #3498db; font-weight: bold; } 
+    .nom-case { color: #ff9f43; font-weight: bold; } 
+    .flag-logic { font-style: italic; opacity: 0.8; font-size: 0.8rem; color: #2ecc71; }
+
+.help-sect {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.help-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    background: rgba(255, 255, 255, 0.05); /* Slight tint for dark mode */
+}
+
+.help-table th {
+    border-bottom: 2px solid var(--germany-gold);
+    padding: 10px;
+    color: var(--germany-gold);
+}
+
+.help-table td {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Logic Hints */
+.flag-logic {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: #2ecc71; /* Green for the Polish/Logic anchor */
+}
+  </style>
+
+<div class="help-sect">
+    <h3>📱 Bedienungsanleitung</h3>
+    <ul>
+        <li><b>Zifferblatt:</b> Die Uhr zeigt die Deutschlandfahne. ⬛ Schwarz (Oben), 🟥 Rot (Mitte), 🟨 Gold (Unten).</li>
+        <li><b>Zeiger bewegen:</b> Ziehen Sie die Zeiger, um die Uhrzeit zu ändern. Die Logik aktualisiert sich sofort.</li>
+        <li><b>Standardmodus:</b> Die App startet automatisch im "Casual" (12h) Modus.</li>
+        <li><b>Meeting-Button:</b> Zeigt standardmäßig die formelle Uhrzeit an (z. B. „Es ist vierzehn Uhr...“).</li>
+        <li><b>Quiz-Modus:</b> Wählen Sie die richtige Phrase. <span style="color:#28a745">Grün</span> ist richtig, <span style="color:#dc3545">Rot</span> ist falsch.</li>
+    </ul>
+</div>
+
+<div class="help-sect">
+    <h3>👔 <span class="nom-case">Formelle</span> Grammatik (24h)</h3>
+    <p>Wird im Radio, am Bahnhof oder für Termine verwendet: <b>Stunde + "Uhr" + Minuten</b>.</p>
+    <table class="help-table">
+        <thead>
+            <tr>
+                <th>Uhrzeit</th>
+                <th>Deutsch (Formell)</th>
+                <th>Logik</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>14:10</td>
+                <td><span class="nom-case">vierzehn</span> Uhr <span class="cardinal-num">zehn</span></td>
+                <td>Präzise 24h</td>
+            </tr>
+            <tr>
+                <td>08:45</td>
+                <td><span class="nom-case">acht</span> Uhr <span class="cardinal-num">fünfundvierzig</span></td>
+                <td>Kardinalzahlen</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="help-sect">
+    <h3>☕ <span class="nom-case">Umgangssprache</span> (12h)</h3>
+    <p>Tägliche Konversation. Wie im Polnischen blickt die deutsche Sprache ab der halben Stunde "nach vorne" zur nächsten Stunde.</p>
+    <table class="help-table">
+        <thead>
+            <tr>
+                <th>Typ</th>
+                <th>Deutsch (Locker)</th>
+                <th>Erklärung</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><b>Nach</b></td>
+                <td><span class="cardinal-num">zehn</span> <b>nach</b> <span class="nom-case">vier</span></td>
+                <td>10 Minuten nach 4:00</td>
+            </tr>
+            <tr>
+                <td><b>Halb</b></td>
+                <td><b>halb</b> <span class="nom-case">fünf</span></td>
+                <td>Auf dem Weg zu 5:00 <br><span class="flag-logic">(Wie: wpół do piątej)</span></td>
+            </tr>
+            <tr>
+                <td><b>Vor</b></td>
+                <td><span class="cardinal-num">zehn</span> <b>vor</b> <span class="nom-case">fünf</span></td>
+                <td>10 Minuten bis 5:00</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        <small>*Hinweis: Wir verwenden nur <b>Kardinalzahlen</b>. Wir sagen <b class="cardinal-num">fünfzehn</b> (15) statt Viertel [2026-01-10].</small>
+    </p>
+</div>
