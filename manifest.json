@@ -1,12 +1,12 @@
 {
   "name": "Say the time in German",
   "short_name": "German Time",
-  "description": "Learn to tell the time in German using Formal and Casual modes.",
-  "start_url": "./index.html",
-  "scope": "./",
+  "description": "Learn to tell the time in German using Casual and Formal modes.",
+  "start_url": "/German-clock2/index.html",
+  "scope": "/German-clock2/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#f8f9fa",
+  "background_color": "#121212",
   "theme_color": "#dc3545",
   "icons": [
     {
