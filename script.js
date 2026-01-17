@@ -3,16 +3,15 @@ let hours = 12, minutes = 0, seconds = 0, isQuiz = false, isRevealed = true, cur
 let isLive = true;
 
 // 2. Data Sets
-const hNom = ["północ", "pierwsza", "druga", "trzecia", "czwarta", "piąta", "szósta", "siódma", "ósma", "dziewiąta", "dziesiąta", "jedenasta", "południe", "trzynasta", "czternasta", "piętnasta", "szesnasta", "siedemnasta", "osiemnasta", "dziewiętnasta", "dwudziesta", "dwudziesta pierwsza", "dwudziesta druga", "dwudziesta trzecia"];
-const hNomPh = ["poow-nots", "pyerv-shah", "droo-gah", "tshe-tsyah", "chvar-tah", "pyon-tah", "shoos-tah", "shood-mah", "oos-mah", "je-vyon-tah", "je-shon-tah", "ye-de-nas-tah", "po-wood-nye", "tshi-nas-tah", "chter-nas-tah", "pyent-nas-tah", "shes-nas-tah", "she-dem-nas-tah", "o-shem-nas-tah", "je-vyet-nas-tah", "dvoo-jest-ah", "dvoo-jest-ah pyerv-shah", "dvoo-jest-ah droo-gah", "dvoo-jest-ah tshe-tsyah"];
-const hGen = ["północy", "pierwszej", "drugiej", "trzeciej", "czwartej", "piątej", "szóstej", "siódmej", "ósmej", "dziewiątej", "dziesiątej", "jedenastej", "południa", "trzynastej", "czternastej", "piętnastej", "szesnastej", "siedemnastej", "osiemnastej", "dziewiętnastej", "dwudziestej", "dwudziestej pierwszej", "dwudziestej drugiej", "dwudziestej trzeciej"];
-const hGenPh = ["poow-no-tsi", "pyerv-shey", "droo-gyey", "tshe-tsiey", "chvar-tey", "pyon-tey", "shoos-tey", "shood-mey", "oos-mey", "je-vyon-tey", "je-shon-tey", "ye-de-nas-tey", "po-wood-nyah", "tshi-nas-tey", "chter-nas-tey", "pyent-nas-tey", "shes-nas-tey", "she-dem-nas-tey", "o-shem-nas-tey", "je-vyet-nas-tey", "dvoo-jes-tey", "dvoo-jes-tey pyerv-shey", "dvoo-jes-tey droo-gyey", "dvoo-jes-tey tshe-tsiey"];
-const mAll = ["zero", "jedna", "dwie", "trzy", "cztery", "pięć", "sześć", "siedem", "osiem", "dziewięć", "dziesięć", "jedenaście", "dwanaście", "trzynaście", "czternaście", "piętnaście", "szesnaście", "siedemnaście", "osiemnaście", "dziewiętnaście", "dwadzieścia", "dwadzieścia jeden", "dwadzieścia dwie", "dwadzieścia trzy", "dwadzieścia cztery", "dwadzieścia pięć", "dwadzieścia sześć", "dwadzieścia siedem", "dwadzieścia osiem", "dwadzieścia dziewięć", "trzydzieści", "trzydzieści jeden", "trzydzieści dwie", "trzydzieści trzy", "trzydzieści cztery", "trzydzieści pięć", "trzydzieści sześć", "trzydzieści siedem", "trzydzieści osiem", "trzydzieści dziewięć", "czterdzieści", "czterdzieści jeden", "czterdzieści dwie", "czterdzieści trzy", "czterdzieści cztery", "czterdzieści pięć", "czterdzieści sześć", "czterdzieści siedem", "czterdzieści osiem", "czterdzieści dziewięć", "pięćdziesiąt", "pięćdziesiąt jeden", "pięćdziesiąt dwie", "pięćdziesiąt trzy", "pięćdziesiąt cztery", "pięćdziesiąt pięć", "pięćdziesiąt sześć", "pięćdziesiąt siedem", "pięćdziesiąt osiem", "pięćdziesiąt dziewięć"];
-const mAllPh = ["ze-ro", "yed-nah", "dvye", "tshi", "chter-ih", "pyench", "shesh-ch", "she-dem", "o-shem", "je-vyench", "je-shench", "ye-de-nas-che", "dva-nash-che", "tshi-nash-che", "chter-nash-che", "pyent-nash-che", "shes-nas-che", "she-dem-nash-che", "o-shem-nash-che", "je-vyet-nas-che", "dva-jes-tsyah", "dva-jes-tsyah yed-nah", "dva-jes-tsyah dvye", "dva-jes-tsyah tshi", "dva-jes-tsyah chter-ih", "dva-jes-tsyah pyench", "dva-jes-tsyah shesh-ch", "dva-jes-tsyah she-dem", "dva-jes-tsyah o-shem", "dva-jes-tsyah je-vyench", "tshi-jes-tsyi", "tshi-jes-tsyi yed-nah", "tshi-jes-tsyi dvye", "tshi-jes-tsyi tshi", "tshi-jes-tsyi chter-ih", "tshi-jes-tsyi pyench", "tshi-jes-tsyi shesh-ch", "tshi-jes-tsyi she-dem", "tshi-jes-tsyi o-shem", "tshi-jes-tsyi je-vyench", "chter-jes-tsyi", "chter-jes-tsyi yed-nah", "chter-jes-tsyi dvye", "chter-jes-tsyi tshi", "chter-jes-tsyi chter-ih", "chter-jes-tsyi pyench", "chter-jes-tsyi shesh-ch", "chter-jes-tsyi she-dem", "chter-jes-tsyi o-shem", "chter-jes-tsyi je-vyench", "pyench-je-shont", "pyench-je-shont yed-nah", "pyench-je-shont dvye", "pyench-je-shont tshi", "pyench-je-shont chter-ih", "pyench-je-shont pyench", "pyench-je-shont shesh-ch", "pyench-je-shont she-dem", "pyench-je-shont o-shem", "pyench-je-shont je-vyench"];
+const hNom = ["Mitternacht", "eins", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn", "elf", "Mittag", "dreizehn", "vierzehn", "fünfzehn", "sechzehn", "siebzehn", "achtzehn", "neunzehn", "zwanzig", "einundzwanzig", "zweiundzwanzig", "dreiundzwanzig"];
+const hNomPh = ["mit-ter-nakht", "eyens", "tsvay", "dray", "feer", "fuenf", "zex", "zee-ben", "akht", "noyn", "tsayn", "elf", "mit-tahk", "dray-tsayn", "feer-tsayn", "fuenf-tsayn", "zex-tsayn", "zeeb-tsayn", "akh-tsayn", "noyn-tsayn", "tsvan-tsig", "eyen-oond-tsvan-tsig", "tsvay-oond-tsvan-tsig", "dray-oond-tsvan-tsig"];const hGen = ["północy", "pierwszej", "drugiej", "trzeciej", "czwartej", "piątej", "szóstej", "siódmej", "ósmej", "dziewiątej", "dziesiątej", "jedenastej", "południa", "trzynastej", "czternastej", "piętnastej", "szesnastej", "siedemnastej", "osiemnastej", "dziewiętnastej", "dwudziestej", "dwudziestej pierwszej", "dwudziestej drugiej", "dwudziestej trzeciej"];
+const hCasual = ["zwölf", "eins", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn", "elf", "zwölf"];
 
+const mAll = ["null", "eins", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn", "elf", "zwölf", "dreizehn", "vierzehn", "fünfzehn", "sechzehn", "siebzehn", "achtzehn", "neunzehn", "zwanzig", "einundzwanzig", "zweiundzwanzig", "dreiundzwanzig", "vierundzwanzig", "fünfundzwanzig", "sechsundzwanzig", "siebenundzwanzig", "achtundzwanzig", "neunundzwanzig", "dreißig", "einunddreißig", "zweiunddreißig", "dreiunddreißig", "vierunddreißig", "fünfunddreißig", "sechsunddreißig", "siebenunddreißig", "achtunddreißig", "neununddreißig", "vierzig", "einundvierzig", "zweiundvierzig", "dreiundvierzig", "vierundvierzig", "fünfundvierzig", "sechsundvierzig", "siebenundvierzig", "achtundvierzig", "neunundvierzig", "fünfzig", "einundfünfzig", "zweiundfünfzig", "dreiundfünfzig", "vierundfünfzig", "fünfundfünfzig", "sechsundfünfzig", "siebenundfünfzig", "achtundfünfzig", "neunundfünfzig"];
+const mAllPh = ["null", "eyens", "tsvay", "dray", "feer", "fuenf", "zex", "zee-ben", "akht", "noyn", "tsayn", "elf", "tsveulf", "dray-tsayn", "feer-tsayn", "fuenf-tsayn", "zex-tsayn", "zeeb-tsayn", "akh-tsayn", "noyn-tsayn", "tsvan-tsig", "eyen-oond-tsvan-tsig", "tsvay-oond-tsvan-tsig", "dray-oond-tsvan-tsig", "feer-oond-tsvan-tsig", "fuenf-oond-tsvan-tsig", "zex-oond-tsvan-tsig", "zeeb-oond-tsvan-tsig", "akh-oond-tsvan-tsig", "noyn-oond-tsvan-tsig", "dry-sig", "eyen-oond-dry-sig", "tsvay-oond-dry-sig", "dray-oond-dry-sig", "feer-oond-dry-sig", "fuenf-oond-dry-sig", "zex-oond-dry-sig", "zeeb-oond-dry-sig", "akh-oond-dry-sig", "noyn-oond-dry-sig", "fiert-sig", "eyen-oond-fiert-sig", "tsvay-oond-fiert-sig", "dray-oond-fiert-sig", "feer-oond-fiert-sig", "fuenf-oond-fiert-sig", "zex-oond-fiert-sig", "zeeb-oond-fiert-sig", "akh-oond-fiert-sig", "noyn-oond-fiert-sig", "fuenf-tsig", "eyen-oond-fuenf-tsig", "tsvay-oond-fuenf-tsig", "dray-oond-fuenf-tsig", "feer-oond-fuenf-tsig", "fuenf-oond-fuenf-tsig", "zex-oond-fuenf-tsig", "zeeb-oond-fuenf-tsig", "akh-oond-fuenf-tsig", "noyn-oond-fuenf-tsig"];
 const dict = {
-    EN: { title: "Say the Time in Polish", actual: "ACTUAL TIME", random: "RANDOM TIME", listen: "🔊 LISTEN", slow: "½ SPEED", ask: "How do you say?", reveal: "REVEAL", close: "Close Help", qOn: "Quiz: ON", qOff: "Quiz: OFF" },
-    PL: { title: "Powiedz Kótra Godzina po Polsku", actual: "AKTUALNY CZAS", random: "LOSOWY CZAS", listen: "🔊 SŁUCHAJ", slow: "½ PRĘDKOŚĆ", ask: "Jak to powiedzieć?", reveal: "POKAŻ", close: "Zamknij", qOn: "Quiz: WŁ", qOff: "Quiz: WYŁ" }
+    EN: { title: "Say the Time in German", actual: "ACTUAL TIME", random: "RANDOM TIME", listen: "🔊 LISTEN", slow: "½ SPEED", ask: "How do you say?", reveal: "REVEAL", close: "Close", qOn: "Quiz: ON", qOff: "Quiz: OFF" },
+    DE: { title: "Sag die Uhrzeit auf Deutsch", actual: "AKTUELLER ZEITPUNKT", random: "ZUFÄLLIGE ZEIT", listen: "🔊 HÖREN", slow: "½ TEMPO", ask: "Wie sagt man das?", reveal: "ZEIGEN", close: "Schließen", qOn: "Quiz: AN", qOff: "Quiz: AUS" }
 };
 
 // Utility
@@ -77,37 +76,30 @@ function updateDisplay(syncInput) {
     // Note: Minutes (cardinal-num) are always blue
     let sStr = (showSec && seconds > 0) ? ` i <span class="cardinal-num">${mAll[seconds]}</span> sekund` : "";
 
-    if (isFormal) {
-        let mStr = (minutes > 0 && minutes < 10) ? "zero " + mAll[minutes] : (minutes === 0 ? "" : mAll[minutes]);
-        let mCard = minutes > 0 ? `<span class="cardinal-num">${mStr}</span>` : "";
-        p = `<span class="nom-case">Godzina ${hNom[hours]}</span> ${mCard}${sStr}`;
-        ph = `go-jee-nah ${hNomPh[hours]} ${mAllPh[minutes]}`;
-        e = `${pad(hours)}:${pad(minutes)}${showSec ? ':' + pad(seconds) : ''}`;
-    } else {
-        let h12 = hours % 12, n12 = (hours + 1) % 12;
-        let displayH = h12 || 12;
-        let nextH = n12 || 12;
+   if (isFormal) {
+    let mStr = (minutes === 0) ? "Uhr" : `Uhr ${mAll[minutes]}`;
+    p = `Es ist ${hNom[hours]} ${mStr}`;
+    ph = `ess ist ${hNomPh[hours]} oor ${mAll[minutes]}`; // Phonetic
+} else {
+    let h12 = hours % 12;
+    let nextH = (hours + 1) % 12 || 12;
+    let displayH = h12 || 12;
 
-        if (minutes === 0) {
-            let spec = hours === 0 ? "północ" : hours === 12 ? "południe" : hNom[h12];
-            p = `<span class="nom-case">${spec}</span>${sStr}`;
-            ph = `${hNomPh[h12]}`;
-            e = hours === 0 ? "Midnight" : hours === 12 ? "Noon" : `${displayH} o'clock`;
-        } else if (minutes < 30) {
-            p = `<span class="cardinal-num">${mAll[minutes]}</span> <span class="gen-case">po ${hGen[h12]}</span>${sStr}`;
-            ph = `${mAllPh[minutes]} po ${hGenPh[h12]}`;
-            e = `${minutes} past ${displayH}`;
-        } else if (minutes === 30) {
-            p = `<span class="gen-case">w pół do ${hGen[n12]}</span>${sStr}`;
-            ph = `fpoow do ${hGenPh[n12]}`;
-            e = `Half past ${displayH}`;
-        } else {
-            let d = 60 - minutes;
-            p = `<span class="nom-case">za</span> <span class="cardinal-num">${mAll[d]}</span> <span class="nom-case">${hNom[n12]}</span>${sStr}`;
-            ph = `zah ${mAllPh[d]} ${hNomPh[n12]}`;
-            e = `${d} to ${nextH}`;
-        }
+    if (minutes === 0) {
+        p = `Es ist ${hCasual[displayH]} Uhr`;
+        e = hours === 0 ? "Midnight" : hours === 12 ? "Noon" : `${displayH} o'clock`;
+    } else if (minutes < 30) {
+        p = `Es ist ${mAll[minutes]} nach ${hCasual[displayH]}`;
+        e = `${minutes} past ${displayH}`;
+    } else if (minutes === 30) {
+        p = `Es ist halb ${hCasual[nextH]}`; // Correct German: 4:30 is "half 5"
+        e = `Half past ${displayH}`;
+    } else {
+        let d = 60 - minutes;
+        p = `Es ist ${mAll[d]} vor ${hCasual[nextH]}`;
+        e = `${d} to ${nextH}`;
     }
+}
 
   // 3. UI Update (Strict Quiz Hiding with Visibility control)
     const d = dict[currentLang];
@@ -187,7 +179,7 @@ function speak(r) {
     let t = document.getElementById('polish-text').innerText;
     if (t.includes("?")) return;
     const m = new SpeechSynthesisUtterance(t);
-    m.lang = 'pl-PL'; m.rate = r;
+    m.lang = 'de-DE'; m.rate = r;
     window.speechSynthesis.speak(m);
 }
 
