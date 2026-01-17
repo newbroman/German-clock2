@@ -275,4 +275,28 @@ body {
     z-index: 1000;
     width: 85%;
     max-width: 450px;
+    /* FIX: Enable scrolling */
+    max-height: 80vh; 
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* Smooth scroll for mobile */
+}
+
+/* Floating Close Button */
+.close-help-btn {
+    position: sticky; /* Floats at the top of the modal content */
+    top: 0;
+    float: right;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
