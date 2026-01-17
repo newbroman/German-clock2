@@ -261,18 +261,22 @@ function getCorrectStr(h, m, formal) {
 }
 
 function manualTime(val) {
-    isLive = false; // Stop the auto-ticking
+    isLive = false; // Stop auto-syncing with system time
     
-    // Supports formats like "14:05" or "1405"
-    let clean = val.replace(/[^0-9]/g, '');
-    if (clean.length >= 3) {
-        let h = parseInt(clean.slice(0, clean.length - 2));
-        let m = parseInt(clean.slice(-2));
+    // Remove anything that isn't a number
+    let digits = val.replace(/\D/g, '');
+    
+    // Logic for "HH:MM" (e.g., 1405 or 205)
+    if (digits.length >= 3) {
+        let h = parseInt(digits.slice(0, digits.length - 2));
+        let m = parseInt(digits.slice(-2));
         
         if (h >= 0 && h < 24 && m >= 0 && m < 60) {
             hours = h;
             minutes = m;
-            updateDisplay(false); // Update clock hands but don't overwrite what user is typing
+            // Update hands and text, but don't force-sync the input box 
+            // so the user can keep typing.
+            updateDisplay(false); 
         }
     }
 }
