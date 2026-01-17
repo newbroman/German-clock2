@@ -177,6 +177,14 @@ body {
 #english-text { opacity: 0.6; font-style: italic; margin-top: 5px; font-size: 1rem; }
 
 /* BUTTONS & CONTROLS */
+
+.setting-row {
+    margin: 15px 0;
+    display: flex;
+    gap: 20px;
+    font-weight: 500;
+}
+
 .btn-sub {
     background-color: var(--bg-color) !important;
     color: var(--text-color);
@@ -192,15 +200,36 @@ body {
 /* Main Action Buttons (80% scale feel preserved) */
 .btn-real, .btn-main {
     width: 100%;
-    padding: 12px; 
-    margin: 5px 0;
-    border-radius: 12px;
+    max-width: 300px;
+    padding: 10px;
+    margin: 4px 0;
+    border-radius: 8px; /* Matches screenshot radius */
     border: none;
     font-weight: bold;
     color: white;
+    text-transform: uppercase;
 }
-.btn-real { background-color: #007bff; }
-.btn-main { background-color: #dc3545; }
+
+.btn-real { background-color: #007bff; } /* Blue as seen in image */
+.btn-main { background-color: #dc3545; } /* Red as seen in image */
+
+.audio-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+    max-width: 300px;
+    margin-top: 10px;
+}
+
+.audio-row .btn-sub {
+    background: white !important;
+    border: 1px solid #666;
+    border-radius: 8px;
+    color: #333;
+    padding: 8px;
+    font-size: 0.9rem;
+}
 
 /* QUIZ OPTIONS */
 #quiz-options {
@@ -226,4 +255,20 @@ body {
     margin-bottom: 5px;
     min-height: 1.6em;
     /* your existing styles for color and alignment */
+}
+
+#help-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 12px;
+    z-index: 100;
+    width: 80%;
+    max-width: 400px;
+    color: #333;
 }
