@@ -283,6 +283,8 @@ function manualTime(val) {
 
 async function toggleHelp() {
     const modal = document.getElementById('help-modal');
+    const helpContent = document.getElementById('help-content');
+    
     if (modal.style.display === 'block') {
         modal.style.display = 'none';
         return;
@@ -293,15 +295,20 @@ async function toggleHelp() {
     try {
         const response = await fetch(helpFile);
         if (!response.ok) throw new Error('Help file not found');
-        const content = await response.text();
+        const html = await response.text();
         
-        // Add the floating close button at the very top of the content
-        const closeBtn = `<button class="close-help-btn" onclick="toggleHelp()">✕</button>`;
-        document.getElementById('help-content').innerHTML = closeBtn + content;
+        // Wrap the fetched content with only the top floating button
+        helpContent.innerHTML = `
+            <button class="close-help-btn" onclick="toggleHelp()">Close ✕</button>
+            <div class="help-scroll-body">${html}</div>
+        `;
         
         modal.style.display = 'block';
     } catch (err) {
-        document.getElementById('help-content').innerHTML = `<button class="close-help-btn" onclick="toggleHelp()">✕</button><p>Help content unavailable.</p>`;
+        helpContent.innerHTML = `
+            <button class="close-help-btn" onclick="toggleHelp()">Close ✕</button>
+            <p>Help content unavailable.</p>
+        `;
         modal.style.display = 'block';
     }
 }
