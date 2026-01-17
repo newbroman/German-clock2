@@ -261,26 +261,45 @@ function getCorrectStr(h, m, formal) {
 }
 
 function manualTime(val) {
-    isLive = false;
-    if(!val.includes(':')) return;
-    const parts = val.split(':');
-    let ph = parseInt(parts[0]), pm = parseInt(parts[1]);
-    if(!isNaN(ph) && !isNaN(pm)) {
-        hours = Math.min(23, Math.max(0, ph));
-        minutes = Math.min(59, Math.max(0, pm));
-        updateDisplay(false);
+    isLive = false; // Stop the auto-ticking
+    
+    // Supports formats like "14:05" or "1405"
+    let clean = val.replace(/[^0-9]/g, '');
+    if (clean.length >= 3) {
+        let h = parseInt(clean.slice(0, clean.length - 2));
+        let m = parseInt(clean.slice(-2));
+        
+        if (h >= 0 && h < 24 && m >= 0 && m < 60) {
+            hours = h;
+            minutes = m;
+            updateDisplay(false); // Update clock hands but don't overwrite what user is typing
+        }
     }
 }
 
 async function toggleHelp() {
     const modal = document.getElementById('help-modal');
-    if (modal.style.display === 'block') { modal.style.display = 'none'; return; }
+    // If modal is open, close it
+    if (modal.style.display === 'block') {
+        modal.style.display = 'none';
+        return;
+    }
+
+    // Determine which file to load
     const helpFile = currentLang === 'DE' ? 'help_de.html' : 'help_en.html';
+    
     try {
-        const r = await fetch(helpFile);
-        document.getElementById('help-content').innerHTML = await r.text();
+        const response = await fetch(helpFile);
+        if (!response.ok) throw new Error('Help file not found');
+        const content = await response.text();
+        document.getElementById('help-content').innerHTML = content;
         modal.style.display = 'block';
-    } catch (e) { modal.style.display = 'block'; }
+    } catch (err) {
+        // Fallback if file is missing
+        document.getElementById('help-content').innerHTML = "Help content unavailable.";
+        modal.style.display = 'block';
+        console.error(err);
+    }
 }
 
 function toggleLang() {
