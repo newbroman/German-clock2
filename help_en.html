@@ -1,12 +1,5 @@
 <style>
-    /* Floating Close Button */
-    .close-help {
-        position: sticky; top: 10px; float: right;
-        background: #dc3545; color: white; border: none;
-        padding: 8px 15px; border-radius: 20px;
-        cursor: pointer; font-weight: bold;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 100;
-    }
+  
 
     /* Table responsive styling */
     #help-content table {
@@ -31,8 +24,7 @@
 </style>
 
 <div id="help-content">
-    <button class="close-help" onclick="toggleHelp()">✕ Close</button>
-
+   
     <div class="help-sect">
         <h3>📱 How to Use</h3>
         <ul>
@@ -125,24 +117,42 @@
         <summary style="cursor: pointer; padding: 10px; background: rgba(128,128,128,0.1); border-radius: 5px; font-weight: bold;">
             Click to show/hide full list (1-23)
         </summary>
-        <table>
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Formal (<span class="nom-case">Hour</span>)</th>
-                    <th>Casual (<span class="nom-case">Hour</span>)</th>
-                    <th>Pronunciation</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>1</td><td class="nom-case">eins</td><td class="nom-case">eins</td><td>eyens</td></tr>
-                <tr><td>2</td><td class="nom-case">zwei</td><td class="nom-case">zwei</td><td>tsvay</td></tr>
-                <tr><td>3</td><td class="nom-case">drei</td><td class="nom-case">drei</td><td>dray</td></tr>
-                <tr><td>12</td><td class="nom-case">zwölf</td><td class="nom-case">zwölf</td><td>tsveulf</td></tr>
-                <tr><td>13</td><td class="nom-case">dreizehn</td><td class="nom-case">eins</td><td>dray-tsayn</td></tr>
-                <tr><td>20</td><td class="nom-case">zwanzig</td><td class="nom-case">acht</td><td>tsvan-tsig</td></tr>
-            </tbody>
-        </table>
+      <table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Formal (<span class="nom-case">Hour</span>)</th>
+            <th>Casual (<span class="nom-case">Hour</span>)</th>
+            <th>Pronunciation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>1</td><td class="nom-case">eins</td><td class="nom-case">eins</td><td>ayns</td></tr>
+        <tr><td>2</td><td class="nom-case">zwei</td><td class="nom-case">zwei</td><td>tsway</td></tr>
+        <tr><td>3</td><td class="nom-case">drei</td><td class="nom-case">drei</td><td>dray</td></tr>
+        <tr><td>4</td><td class="nom-case">vier</td><td class="nom-case">vier</td><td>feer</td></tr>
+        <tr><td>5</td><td class="nom-case">fünf</td><td class="nom-case">fünf</td><td>fuenf</td></tr>
+        <tr><td>6</td><td class="nom-case">sechs</td><td class="nom-case">sechs</td><td>zeks</td></tr>
+        <tr><td>7</td><td class="nom-case">sieben</td><td class="nom-case">sieben</td><td>zee-ben</td></tr>
+        <tr><td>8</td><td class="nom-case">acht</td><td class="nom-case">acht</td><td>akht</td></tr>
+        <tr><td>9</td><td class="nom-case">neun</td><td class="nom-case">neun</td><td>noyn</td></tr>
+        <tr><td>10</td><td class="nom-case">zehn</td><td class="nom-case">zehn</td><td>tsayn</td></tr>
+        <tr><td>11</td><td class="nom-case">elf</td><td class="nom-case">elf</td><td>elf</td></tr>
+        <tr><td>12</td><td class="nom-case">zwölf</td><td class="nom-case">zwölf / Mittag</td><td>tsveulf</td></tr>
+        <tr><td>13</td><td class="nom-case">dreizehn</td><td class="nom-case">eins</td><td>dray-tsayn</td></tr>
+        <tr><td>14</td><td class="nom-case">vierzehn</td><td class="nom-case">zwei</td><td>feer-tsayn</td></tr>
+        <tr><td>15</td><td class="nom-case">fünfzehn</td><td class="nom-case">drei</td><td>fuenf-tsayn</td></tr>
+        <tr><td>16</td><td class="nom-case">sechzehn</td><td class="nom-case">vier</td><td>zekh-tsayn</td></tr>
+        <tr><td>17</td><td class="nom-case">siebzehn</td><td class="nom-case">fünf</td><td>zeeb-tsayn</td></tr>
+        <tr><td>18</td><td class="nom-case">achtzehn</td><td class="nom-case">sechs</td><td>akht-tsayn</td></tr>
+        <tr><td>19</td><td class="nom-case">neunzehn</td><td class="nom-case">sieben</td><td>noyn-tsayn</td></tr>
+        <tr><td>20</td><td class="nom-case">zwanzig</td><td class="nom-case">acht</td><td>tsvan-tsig</td></tr>
+        <tr><td>21</td><td class="nom-case">einundzwanzig</td><td class="nom-case">neun</td><td>ayn-unt-tsvan-tsig</td></tr>
+        <tr><td>22</td><td class="nom-case">zweiundzwanzig</td><td class="nom-case">zehn</td><td>tsvay-unt-tsvan-tsig</td></tr>
+        <tr><td>23</td><td class="nom-case">dreiundzwanzig</td><td class="nom-case">elf</td><td>dray-unt-tsvan-tsig</td></tr>
+        <tr><td>0</td><td class="nom-case">null</td><td class="nom-case">Mitternacht</td><td>null</td></tr>
+    </tbody>
+</table>
     </details>
     </div>
 
