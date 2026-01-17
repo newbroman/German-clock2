@@ -209,9 +209,13 @@ function toggleQuiz() {
 }
 function generateQuizOptions() {
     const container = document.getElementById('quiz-options');
+    // Checks which radio button is active (Defaults to Casual)
     const isFormal = document.getElementById('formal').checked;
+    
     const correctAnswer = getCorrectStr(hours, minutes, isFormal);
     let options = [correctAnswer];
+
+    // Generate 3 wrong answers
     while (options.length < 4) {
         let rH = Math.floor(Math.random() * 24);
         let rM = Math.floor(Math.random() * 60);
@@ -221,16 +225,25 @@ function generateQuizOptions() {
     options.sort(() => Math.random() - 0.5);
     container.innerHTML = "";
     container.style.display = "grid";
+    
     options.forEach(opt => {
         const btn = document.createElement('button');
         btn.innerHTML = opt;
-        btn.style.cssText = "padding:10px; border-radius:8px; border:1px solid #ccc; background:white; cursor:pointer;";
+        btn.className = "quiz-btn"; // Use a class for CSS styling
         btn.onclick = () => {
             if (opt === correctAnswer) {
-                btn.style.background = "#28a745"; btn.style.color = "white";
-                setTimeout(() => { isRevealed = true; updateDisplay(true); container.style.display="none"; }, 500);
+                btn.style.background = "#28a745"; 
+                btn.style.color = "white";
+                // Delay reveal slightly for effect
+                setTimeout(() => { 
+                    isRevealed = true; 
+                    updateDisplay(true); 
+                    container.style.display = "none"; 
+                }, 500);
             } else {
-                btn.style.background = "#dc3545"; btn.style.color = "white"; btn.disabled = true;
+                btn.style.background = "#dc3545"; 
+                btn.style.color = "white"; 
+                btn.disabled = true;
             }
         };
         container.appendChild(btn);
@@ -239,15 +252,22 @@ function generateQuizOptions() {
 
 function getCorrectStr(h, m, formal) {
     if (formal) {
+        // Formal: "Es ist [Hour] Uhr [Minutes]"
         let mStr = (m === 0) ? "Uhr" : `Uhr ${mAll[m]}`;
         return `Es ist ${hNom[h]} ${mStr}`.trim();
     } else {
+        // Casual: German 12h logic
         let h12 = h % 12;
         let nextH = (h + 1) % 12 || 12;
         let dispH = h12 || 12;
-        if (m === 0) return `Es ist ${hCasual[dispH]} Uhr`;
+
+        if (m === 0) {
+            let spec = h === 0 ? "Mitternacht" : h === 12 ? "Mittag" : hCasual[dispH];
+            return `Es ist ${spec} Uhr`;
+        }
         if (m < 30) return `${mAll[m]} nach ${hCasual[dispH]}`;
         if (m === 30) return `halb ${hCasual[nextH]}`;
+        // After 30 mins, we count down to the next hour
         return `${mAll[60-m]} vor ${hCasual[nextH]}`;
     }
 }
