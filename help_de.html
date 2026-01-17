@@ -1,29 +1,61 @@
 <style>
-    /* Tabellen-Styling */
+    /* 1. Device-Aware Background and Text */
+    :root {
+        color-scheme: light dark;
+    }
+
+    #help-content {
+        /* This ensures the background matches the device default */
+        background-color: canvas; 
+        color: canvastext;
+        padding: 15px;
+        font-family: sans-serif;
+    }
+
+    /* 2. Table responsive styling */
     #help-content table {
-        width: 100%; border-collapse: collapse; margin: 15px 0;
-        font-size: 0.85rem; text-align: center;
+        width: 100%; 
+        border-collapse: collapse; 
+        margin: 15px 0;
+        font-size: 0.85rem; 
+        text-align: center;
+        /* Using rgba for borders so they adapt to dark/light backgrounds */
         border-bottom: 2px solid rgba(128, 128, 128, 0.5);
-        display: block; overflow-x: auto; white-space: nowrap;
+        display: block; 
+        overflow-x: auto; 
+        white-space: nowrap;
     }
 
     #help-content th {
-        background-color: transparent; 
+        background-color: rgba(128, 128, 128, 0.1); 
         border-top: 2px solid rgba(128, 128, 128, 0.5);
         border-bottom: 2px solid rgba(128, 128, 128, 0.5);
         padding: 10px;
     }
 
-    #help-content td { padding: 8px; border-bottom: 1px solid rgba(128, 128, 128, 0.2); }
+    #help-content td { 
+        padding: 8px; 
+        border-bottom: 1px solid rgba(128, 128, 128, 0.2); 
+    }
 
-    /* Grammatik-Farben */
-    .cardinal-num { color: #3498db; font-weight: bold; } /* Blau - Minuten/Sekunden */
-    .nom-case { color: #e67e22; font-weight: bold; }    /* Orange - Stunden */
-    
+    /* 3. Grammar Colors (Kept bright for visibility) */
+    .cardinal-num { color: #3498db; font-weight: bold; } /* Blue - Minutes */
+    .nom-case { color: #e67e22; font-weight: bold; }    /* Orange - Hours */
+
+    /* 4. Specific Dark Mode Adjustments */
+    @media (prefers-color-scheme: dark) {
+        #help-content {
+            background-color: #121212; /* Standard dark mode gray */
+            color: #e0e0e0;
+        }
+        #help-content summary {
+            background: rgba(255, 255, 255, 0.1); /* Lighter background for dark mode */
+        }
+    }
+
     .help-sect { margin-bottom: 25px; }
-    h3 { border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 20px; }
+    h3 { border-bottom: 1px solid rgba(128, 128, 128, 0.3); padding-bottom: 5px; }
 </style>
-
 <div id="help-content">
     <div class="help-sect">
         <h3>📱 Bedienung</h3>
