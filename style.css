@@ -193,3 +193,11 @@ body {
     margin-bottom: 20px;
     text-align: center;
 }
+/* Update your CSS class name */
+.lang-display {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    min-height: 1.6em;
+    /* your existing styles for color and alignment */
+}
