@@ -283,26 +283,26 @@ function manualTime(val) {
 
 async function toggleHelp() {
     const modal = document.getElementById('help-modal');
-    // If modal is open, close it
     if (modal.style.display === 'block') {
         modal.style.display = 'none';
         return;
     }
 
-    // Determine which file to load
     const helpFile = currentLang === 'DE' ? 'help_de.html' : 'help_en.html';
     
     try {
         const response = await fetch(helpFile);
         if (!response.ok) throw new Error('Help file not found');
         const content = await response.text();
-        document.getElementById('help-content').innerHTML = content;
+        
+        // Add the floating close button at the very top of the content
+        const closeBtn = `<button class="close-help-btn" onclick="toggleHelp()">✕</button>`;
+        document.getElementById('help-content').innerHTML = closeBtn + content;
+        
         modal.style.display = 'block';
     } catch (err) {
-        // Fallback if file is missing
-        document.getElementById('help-content').innerHTML = "Help content unavailable.";
+        document.getElementById('help-content').innerHTML = `<button class="close-help-btn" onclick="toggleHelp()">✕</button><p>Help content unavailable.</p>`;
         modal.style.display = 'block';
-        console.error(err);
     }
 }
 
