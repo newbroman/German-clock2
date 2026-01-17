@@ -1,7 +1,7 @@
 {
-  "name": "Polish Time Learner",
-  "short_name": "Polish Time",
-  "description": "Learn to tell the time in Polish using Formal and Casual modes.",
+  "name": "Say the time in German",
+  "short_name": "German Time",
+  "description": "Learn to tell the time in German using Formal and Casual modes.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
