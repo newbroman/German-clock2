@@ -1,11 +1,12 @@
+
 // 1. Global State
 let hours = 12, minutes = 0, seconds = 0, isQuiz = false, isRevealed = true, currentLang = 'EN', showPh = true, showSec = false;
 let isLive = true;
 
-// 2. Data Sets (Updated for German)
-const hNom = ["Mitternacht", "ein", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn", "elf", "zwölf", "dreizehn", "vierzehn", "fünfzehn", "sechzehn", "siebzehn", "achtzehn", "neunzehn", "zwanzig", "einundzwanzig", "zweiundzwanzig", "dreiundzwanzig"];
-const hNomPh = ["mit-ter-nakht", "ayn", "tsway", "dray", "feer", "fuenf", "zeks", "zee-ben", "akht", "noyn", "tsayn", "elf", "tsveulf", "dray-tsayn", "feer-tsayn", "fuenf-tsayn", "zeks-tsayn", "zeeb-tsayn", "akht-tsayn", "noyn-tsayn", "tsvan-tsig", "ayn-unt-tsvan-tsig", "tsvay-unt-tsvan-tsig", "dray-unt-tsvan-tsig"];
-const mAll = ["null", "eins", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn", "elf", "zwölf", "dreizehn", "vierzehn", "fünfzehn", "sechzehn", "siebzehn", "achtzehn", "neunzehn", "zwanzig", "einundzwanzig", "zweiundzwanzig", "dreiundzwanzig", "vierundzwanzig", "fünfundzwanzig", "sechsundzwanzig", "siebenundzwanzig", "achtundzwanzig", "neunundzwanzig", "dreißig", "einunddreißig", "zweiunddreißig", "dreiunddreißig", "vierunddreißig", "fünfunddreißig", "sechsunddreißig", "siebenunddreißig", "achtunddreißig", "neununddreißig", "vierzig", "einundvierzig", "zweiundvierzig", "dreiundvierzig", "vierundvierzig", "fünfundvierzig", "sechsundvierzig", "siebenundvierzig", "achtundvierzig", "neunundvierzig", "fünfzig", "einundfünfzig", "zweiundfünfzig", "dreiundfünfzig", "vierundfünfzig", "fünfundfünfzig", "sechsundfünfzig", "siebenundfünfzig", "achtundfünfzig", "neunundfünfzig"];
+// 2. Data Sets (German)
+const hNom = ["Mitternacht", "eins", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn", "elf", "zwölf", "dreizehn", "vierzehn", "fünfzehn", "sechzehn", "siebzehn", "achtzehn", "neunzehn", "zwanzig", "einundzwanzig", "zweiundzwanzig", "dreiundzwanzig"];
+const hNomPh = ["mit-ter-nakht", "ayns", "tsway", "dray", "feer", "fuenf", "zeks", "zee-ben", "akht", "noyn", "tsayn", "elf", "tsveulf", "dray-tsayn", "feer-tsayn", "fuenf-tsayn", "zeks-tsayn", "zeeb-tsayn", "akht-tsayn", "noyn-tsayn", "tsvan-tsig", "ayn-unt-tsvan-tsig", "tsvay-unt-tsvan-tsig", "dray-unt-tsvan-tsig"];
+const mAll = ["null", "eins", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn", "elf", "zwölf", "trzynaście", "vierzehn", "fünfzehn", "sechzehn", "siebzehn", "achtzehn", "neunzehn", "zwanzig", "einundzwanzig", "zweiundzwanzig", "dreiundzwanzig", "vierundzwanzig", "fünfundzwanzig", "sechsundzwanzig", "siebenundzwanzig", "achtundzwanzig", "neunundzwanzig", "dreißig", "einunddreißig", "zweiunddreißig", "dreiunddreißig", "vierunddreißig", "fünfunddreißig", "sechsunddreißig", "siebenunddreißig", "achtunddreißig", "neununddreißig", "vierzig", "einundvierzig", "zweiundvierzig", "dreiundvierzig", "vierundvierzig", "fünfundvierzig", "sechsundvierzig", "siebenundvierzig", "achtundvierzig", "neunundvierzig", "fünfzig", "einundfünfzig", "zweiundfünfzig", "dreiundfünfzig", "vierundfünfzig", "fünfundfünfzig", "sechsundfünfzig", "siebenundfünfzig", "achtundfünfzig", "neunundfünfzig"];
 const mAllPh = ["null", "ayns", "tsway", "dray", "feer", "fuenf", "zeks", "zee-ben", "akht", "noyn", "tsayn", "elf", "tsveulf", "dray-tsayn", "feer-tsayn", "fuenf-tsayn", "zeks-tsayn", "zeeb-tsayn", "akht-tsayn", "noyn-tsayn", "tsvan-tsig", "ayn-unt-tsvan-tsig", "tsvay-unt-tsvan-tsig", "dray-unt-tsvan-tsig", "feer-unt-tsvan-tsig", "fuenf-unt-tsvan-tsig", "zeks-unt-tsvan-tsig", "zeeb-unt-tsvan-tsig", "akht-unt-tsvan-tsig", "noyn-unt-tsvan-tsig", "dray-sig", "ayn-unt-dray-sig", "tsvay-unt-dray-sig", "dray-unt-dray-sig", "feer-unt-dray-sig", "fuenf-unt-dray-sig", "zeks-unt-dray-sig", "zeeb-unt-dray-sig", "akht-unt-dray-sig", "noyn-unt-dray-sig", "feer-tsig", "ayn-unt-feer-tsig", "tsvay-unt-feer-tsig", "dray-unt-feer-tsig", "feer-unt-feer-tsig", "fuenf-unt-feer-tsig", "zeks-unt-feer-tsig", "zeeb-unt-feer-tsig", "akht-unt-feer-tsig", "noyn-unt-feer-tsig", "fuenf-tsig", "ayn-unt-fuenf-tsig", "tsvay-unt-fuenf-tsig", "dray-unt-fuenf-tsig", "feer-unt-fuenf-tsig", "fuenf-unt-fuenf-tsig", "zeks-unt-fuenf-tsig", "zeeb-unt-fuenf-tsig", "akht-unt-fuenf-tsig", "noyn-unt-fuenf-tsig"];
 
 const dict = {
@@ -24,11 +25,11 @@ function init() {
         const m = document.createElement('div');
         m.className = 'mark';
         m.style.transform = `rotate(${i * 30}deg)`;
-        m.style.transformOrigin = `1px 72.5px`;
+        m.style.transformOrigin = `1px 72.5px`; // Center for 145px clock
         c.appendChild(m);
     }
 
-    // [cite: 2026-01-13] Casual mode is the default
+    // Set casual mode as default [cite: 2026-01-13]
     document.getElementById('casual').checked = true;
 
     setRealTime(); 
@@ -126,16 +127,78 @@ function updateDisplay(syncInput) {
     }
 }
 
-// ... (startDrag, setRealTime, rollTime, manualTime functions remain logic-consistent) ...
+function startDrag(e) {
+    isLive = false;
+    e.preventDefault();
+    const clock = document.getElementById('clock-container');
+    const move = (ev) => {
+        const rect = clock.getBoundingClientRect();
+        const cx = ev.touches ? ev.touches[0].clientX : ev.clientX;
+        const cy = ev.touches ? ev.touches[0].clientY : ev.clientY;
+        const x = cx - rect.left - rect.width / 2;
+        const y = cy - rect.top - rect.height / 2;
+        const angle = Math.atan2(y, x) * (180 / Math.PI) + 90;
+        const norm = (angle < 0) ? angle + 360 : angle;
+        const dist = Math.sqrt(x*x + y*y);
+
+        if (dist < 35) {
+            let newH = Math.round(norm / 30) % 12;
+            if (hours >= 12) newH += 12;
+            hours = newH;
+        } else {
+            minutes = Math.round(norm / 6) % 60;
+        }
+        updateDisplay(true);
+    };
+    const stop = () => {
+        window.removeEventListener('mousemove', move);
+        window.removeEventListener('touchmove', move);
+        if (isQuiz) generateQuizOptions();
+    };
+    window.addEventListener('mousemove', move);
+    window.addEventListener('touchmove', move);
+    window.addEventListener('mouseup', stop, {once:true});
+    window.addEventListener('touchend', stop, {once:true});
+}
+
+function setRealTime() {
+    isLive = true; 
+    const n = new Date();
+    hours = n.getHours(); minutes = n.getMinutes(); seconds = n.getSeconds();
+    isRevealed = !isQuiz;
+    updateDisplay(true);
+}
+
+function rollTime() {
+    isLive = false; 
+    hours = Math.floor(Math.random() * 24);
+    minutes = Math.floor(Math.random() * 60);
+    seconds = 0;
+    isRevealed = !isQuiz;
+    updateDisplay(true);
+    if (isQuiz) generateQuizOptions();
+}
 
 function speak(r) {
     window.speechSynthesis.cancel();
     let t = document.getElementById('lang-text').innerText;
     if (t.includes("?")) return;
     const m = new SpeechSynthesisUtterance(t);
-    m.lang = 'de-DE'; // Updated for German
+    m.lang = 'de-DE'; 
     m.rate = r;
     window.speechSynthesis.speak(m);
+}
+
+function toggleSec() {
+    showSec = !showSec;
+    if (isQuiz) isRevealed = false; 
+    document.getElementById('sec-toggle').innerText = showSec ? "Sec: ON" : "Sec: OFF";
+    updateDisplay(true);
+}
+
+function togglePh() {
+    showPh = !showPh;
+    updateDisplay(true);
 }
 
 function toggleQuiz() {
@@ -146,7 +209,7 @@ function toggleQuiz() {
         generateQuizOptions();
         document.getElementById('quiz-toggle').innerText = dict[currentLang].qOn;
     } else {
-        isRevealed = true;
+        isRevealed = true; 
         container.style.display = "none";
         document.getElementById('quiz-toggle').innerText = dict[currentLang].qOff;
     }
@@ -170,7 +233,6 @@ function generateQuizOptions() {
     options.forEach(opt => {
         const btn = document.createElement('button');
         btn.innerHTML = opt;
-        btn.className = "quiz-btn";
         btn.onclick = () => {
             if (opt === correctAnswer) {
                 btn.style.background = "#28a745"; btn.style.color = "white";
@@ -191,17 +253,28 @@ function getCorrectStr(h, m, formal) {
     } else {
         let h12 = h % 12;
         let nextH = (h + 1) % 12 || 12;
-        if (m === 0) return `<span class="nom-case">${hNom[h12]}</span>`;
-        if (m < 30) return `<span class="cardinal-num">${mAll[m]}</span> nach <span class="nom-case">${hNom[h12]}</span>`;
+        if (m === 0) return `Es ist <span class="nom-case">${hNom[h % 12 || 12]}</span> Uhr`;
+        if (m < 30) return `<span class="cardinal-num">${mAll[m]}</span> nach <span class="nom-case">${hNom[h12 || 12]}</span>`;
         if (m === 30) return `halb <span class="nom-case">${hNom[nextH]}</span>`;
         return `<span class="cardinal-num">${mAll[60-m]}</span> vor <span class="nom-case">${hNom[nextH]}</span>`;
+    }
+}
+
+function manualTime(val) {
+    isLive = false;
+    if(!val.includes(':')) return;
+    const parts = val.split(':');
+    let ph = parseInt(parts[0]), pm = parseInt(parts[1]);
+    if(!isNaN(ph) && !isNaN(pm)) {
+        hours = Math.min(23, Math.max(0, ph));
+        minutes = Math.min(59, Math.max(0, pm));
+        updateDisplay(false);
     }
 }
 
 async function toggleHelp() {
     const modal = document.getElementById('help-modal');
     if (modal.style.display === 'block') { modal.style.display = 'none'; return; }
-    // Points to German or English help
     const helpFile = currentLang === 'DE' ? 'help_de.html' : 'help_en.html';
     try {
         const r = await fetch(helpFile);
@@ -212,7 +285,7 @@ async function toggleHelp() {
 
 function toggleLang() {
     currentLang = (currentLang === 'EN' ? 'DE' : 'EN');
-    if (isQuiz) isRevealed = false;
+    if (isQuiz) isRevealed = false; 
     const d = dict[currentLang];
     document.getElementById('app-title').innerText = d.title;
     document.getElementById('btn-real').innerText = d.actual;
