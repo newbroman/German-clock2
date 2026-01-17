@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Say the time in Polish</title>
+    <title>Say the Time in German</title>
     
     <meta name="color-scheme" content="light dark">
-    
     <meta name="theme-color" content="#f8f9fa" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
     
@@ -15,65 +14,66 @@
 </head>
 <body onload="init()">
 <div class="container">
-    <h1 id="app-title">Say the Time in Polish</h1>
-   <div class="top-row">
-    <button type="button" class="btn-sub" onclick="event.stopPropagation(); toggleLang()">EN/PL</button>
-    <button type="button" class="btn-sub" id="quiz-toggle" onclick="toggleQuiz()">Quiz: OFF</button>
-    <button type="button" class="btn-sub" id="sec-toggle" onclick="toggleSec()">Sec: OFF</button>
-    <button type="button" class="btn-sub" id="ph-toggle" onclick="togglePh()">Phon</button>
-    <button type="button" class="btn-sub" onclick="toggleHelp()">❓</button>
-</div>
-
-   <div id="clock-container" onmousedown="startDrag(event)" ontouchstart="startDrag(event)">
-    <div class="mark" style="transform: rotate(0deg)"></div>
-    <div class="mark" style="transform: rotate(30deg)"></div>
-    <div class="mark" style="transform: rotate(60deg)"></div>
-    <div class="mark" style="transform: rotate(90deg)"></div>
-    <div class="mark" style="transform: rotate(120deg)"></div>
-    <div class="mark" style="transform: rotate(150deg)"></div>
-    <div class="mark" style="transform: rotate(180deg)"></div>
-    <div class="mark" style="transform: rotate(210deg)"></div>
-    <div class="mark" style="transform: rotate(240deg)"></div>
-    <div class="mark" style="transform: rotate(270deg)"></div>
-    <div class="mark" style="transform: rotate(300deg)"></div>
-    <div class="mark" style="transform: rotate(330deg)"></div>
-
-    <div id="h-hand" class="hand hour-hand"></div>
-    <div id="m-hand" class="hand min-hand"></div>
-    <div id="s-hand" class="sec-hand"></div>
-    <div class="dot"></div>
-</div>
+    <h1 id="app-title">Say the Time in German</h1>
     
-   <div class="digital-wrap">
-    <input type="text" id="time-input-display" placeholder="00:00" oninput="manualTime(this.value)">
-</div>
+    <div class="top-row">
+        <button type="button" class="btn-sub" id="lang-toggle" onclick="event.stopPropagation(); toggleLang()">EN/DE</button>
+        <button type="button" class="btn-sub" id="quiz-toggle" onclick="toggleQuiz()">Quiz: OFF</button>
+        <button type="button" class="btn-sub" id="sec-toggle" onclick="toggleSec()">Sec: OFF</button>
+        <button type="button" class="btn-sub" id="ph-toggle" onclick="togglePh()">Phon</button>
+        <button type="button" class="btn-sub" onclick="toggleHelp()">❓</button>
+    </div>
 
-  <div class="display-area">
-        <div class="polish-display" id="polish-text"></div>
+    <div id="clock-container" onmousedown="startDrag(event)" ontouchstart="startDrag(event)">
+        <div class="mark" style="transform: rotate(0deg)"></div>
+        <div class="mark" style="transform: rotate(30deg)"></div>
+        <div class="mark" style="transform: rotate(60deg)"></div>
+        <div class="mark" style="transform: rotate(90deg)"></div>
+        <div class="mark" style="transform: rotate(120deg)"></div>
+        <div class="mark" style="transform: rotate(150deg)"></div>
+        <div class="mark" style="transform: rotate(180deg)"></div>
+        <div class="mark" style="transform: rotate(210deg)"></div>
+        <div class="mark" style="transform: rotate(240deg)"></div>
+        <div class="mark" style="transform: rotate(270deg)"></div>
+        <div class="mark" style="transform: rotate(300deg)"></div>
+        <div class="mark" style="transform: rotate(330deg)"></div>
+
+        <div id="h-hand" class="hand hour-hand"></div>
+        <div id="m-hand" class="hand min-hand"></div>
+        <div id="s-hand" class="sec-hand"></div>
+        <div class="dot"></div>
+    </div>
+    
+    <div class="digital-wrap">
+        <input type="text" id="time-input-display" placeholder="00:00" oninput="manualTime(this.value)">
+    </div>
+
+    <div class="display-area">
+        <div class="lang-display" id="lang-text"></div>
         <div class="phonetic-display" id="phonetic-text"></div>
         <div class="english-display" id="english-text"></div>
         <button id="reveal-btn" style="display:none; background:#28a745; color:white; margin-top:5px;" onclick="revealAnswer()">REVEAL</button>
         <div id="quiz-options" style="display: none; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px;"></div>
-      </div>
+    </div>
 
-  <div class="setting-row">
-    <label><input type="radio" name="mode" id="casual" checked onchange="updateDisplay(true)"> Casual</label>
-    <label><input type="radio" name="mode" id="formal" onchange="updateDisplay(true)"> Formal</label>
-</div>
+    <div class="setting-row">
+        <label><input type="radio" name="mode" id="casual" checked onchange="updateDisplay(true)"> Casual</label>
+        <label><input type="radio" name="mode" id="formal" onchange="updateDisplay(true)"> Formal</label>
+    </div>
 
-<button class="btn-real" id="btn-real" onclick="setRealTime()">ACTUAL TIME</button>
-<button class="btn-main" id="btn-random" onclick="rollTime()">RANDOM TIME</button>
+    <button class="btn-real" id="btn-real" onclick="setRealTime()">ACTUAL TIME</button>
+    <button class="btn-main" id="btn-random" onclick="rollTime()">RANDOM TIME</button>
 
-<div class="audio-row">
-    <button type="button" class="btn-sub" id="btn-listen" onclick="speak(1)">🔊 LISTEN</button>
-    <button type="button" class="btn-sub" id="btn-slow" onclick="speak(0.5)">½ SPEED</button>
-</div>
+    <div class="audio-row">
+        <button type="button" class="btn-sub" id="btn-listen" onclick="speak(1)">🔊 LISTEN</button>
+        <button type="button" class="btn-sub" id="btn-slow" onclick="speak(0.5)">½ SPEED</button>
+    </div>
 
     <div id="help-modal">
-    <h2 id="help-title">Guide / Poradnik</h2>
-    <div id="help-content"></div>
-    <button class="btn-main" id="help-close" onclick="toggleHelp()">Close</button>
-</div>
+        <h2 id="help-title">Guide / Anleitung</h2>
+        <div id="help-content"></div>
+        <button class="btn-main" id="help-close" onclick="toggleHelp()">Close</button>
+    </div>
 
 <script src="script.js"></script>
 </body>
