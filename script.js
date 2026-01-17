@@ -19,21 +19,25 @@ const pad = (n) => n.toString().padStart(2, '0');
 
 function init() {
     const c = document.getElementById('clock-container');
+    // Clear old marks if any
     c.querySelectorAll('.mark').forEach(m => m.remove());
 
     for (let i = 0; i < 12; i++) {
         const m = document.createElement('div');
         m.className = 'mark';
         m.style.transform = `rotate(${i * 30}deg)`;
-        m.style.transformOrigin = `1px 72.5px`; // Center for 145px clock
+        m.style.transformOrigin = `1px 72.5px`; 
         c.appendChild(m);
     }
 
-    // Set casual mode as default [cite: 2026-01-13]
-    document.getElementById('casual').checked = true;
+    // Force Casual Mode at startup [cite: 2026-01-17]
+    const casualRadio = document.getElementById('casual');
+    if (casualRadio) casualRadio.checked = true;
 
+    // Set the time and initial draw
     setRealTime(); 
     
+    // Start the clock interval
     setInterval(() => {
         if (isQuiz) return; 
         if (isLive) {
@@ -42,15 +46,7 @@ function init() {
             hours = now.getHours();
             minutes = now.getMinutes();
         } else {
-            seconds++;
-            if (seconds >= 60) {
-                seconds = 0;
-                minutes++;
-                if (minutes >= 60) {
-                    minutes = 0;
-                    hours = (hours + 1) % 24;
-                }
-            }
+            // Logic for manual/stopped clock progression if needed
         }
         updateDisplay(true);
     }, 1000);
