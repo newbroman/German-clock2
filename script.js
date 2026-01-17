@@ -101,7 +101,7 @@ function updateDisplay(syncInput) {
     }
 
     const d = dict[currentLang];
-    const pt = document.getElementById('polish-text'); 
+    const pt = document.getElementById('lang-text');('German-text'); 
     const pht = document.getElementById('phonetic-text');
     const et = document.getElementById('english-text');
 
@@ -172,7 +172,7 @@ function rollTime() {
 
 function speak(r) {
     window.speechSynthesis.cancel();
-    let t = document.getElementById('polish-text').innerText;
+    let t = document.getElementById('lang-text').innerText;
     if (t.includes("?")) return;
     const m = new SpeechSynthesisUtterance(t);
     m.lang = 'de-DE'; m.rate = r;
