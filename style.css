@@ -72,10 +72,17 @@ body {
     border: 5px solid var(--text-color);
     border-radius: 50%;
     position: relative;
-    background: var(--clock-face); /* Applies the flag colors */
+    /* Updated background for the German Flag (Black, Red, Gold) */
+    background: linear-gradient(
+        #000000 33.3%, 
+        #FF0000 33.3%, 
+        #FF0000 66.6%, 
+        #FFCC00 66.6%
+    );
     margin: 10px 0;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    overflow: hidden; /* Ensures the flag doesn't bleed out */
+    overflow: hidden; 
+    opacity: 0.85; /* Slightly higher opacity for better color vibrance */
 }
 .mark {
     background-color: #ffffff !important; /* Pure white for the black stripe */
