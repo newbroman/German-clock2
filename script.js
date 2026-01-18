@@ -1,4 +1,4 @@
-const APP_VERSION = "german-clock-v103"; // Increment this whenever you change your code
+const APP_VERSION = "german-clock-v105"; // Increment this whenever you change your code
 // 1. Global State
 let hours = 12, minutes = 0, seconds = 0, isQuiz = false, isRevealed = true, currentLang = 'EN', showPh = true, showSec = false;
 let isLive = true;
@@ -128,6 +128,7 @@ function startDrag(e) {
     e.preventDefault();
     const clock = document.getElementById('clock-container');
     const move = (ev) => {
+        if (isQuiz) isRevealed = false;
         const rect = clock.getBoundingClientRect();
         const cx = ev.touches ? ev.touches[0].clientX : ev.clientX;
         const cy = ev.touches ? ev.touches[0].clientY : ev.clientY;
