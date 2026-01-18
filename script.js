@@ -68,6 +68,15 @@ function updateDisplay(syncInput) {
     // 2. German Grammar Logic
     const isFormal = document.getElementById('formal').checked;
     let p = "", ph = "", e = "";
+    if (isFormal) {
+        e = `It is ${hours}:${pad(minutes)}`;
+    } else {
+        let h12 = hours % 12 || 12;
+        let nextH = (hours + 1) % 12 || 12;
+        if (minutes === 0) e = `It's ${h12} o'clock`;
+        else if (minutes <= 30) e = `${minutes} past ${h12}`;
+        else e = `${60 - minutes} to ${nextH}`;
+    }
     
     // Seconds string (Green)
     let sStr = (showSec && seconds > 0) ? ` und <span class="second-text">${mAll[seconds]}</span> Sekunden` : "";
@@ -272,7 +281,7 @@ function getCorrectStr(h, m, formal) {
 
 function manualTime(val) {
     isLive = false; // Stop auto-syncing with system time
-    
+    if (isQuiz) isRevealed = false;
     // Remove anything that isn't a number
     let digits = val.replace(/\D/g, '');
     
