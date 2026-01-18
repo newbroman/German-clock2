@@ -177,6 +177,15 @@ body {
 #english-text { opacity: 0.6; font-style: italic; margin-top: 5px; font-size: 1rem; }
 
 /* BUTTONS & CONTROLS */
+
+.setting-row {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    margin: 15px 0;
+    font-family: sans-serif;
+}
+
 .btn-sub {
     background-color: var(--bg-color) !important;
     color: var(--text-color);
@@ -192,15 +201,39 @@ body {
 /* Main Action Buttons (80% scale feel preserved) */
 .btn-real, .btn-main {
     width: 100%;
-    padding: 12px; 
-    margin: 5px 0;
-    border-radius: 12px;
+    max-width: 320px;
+    padding: 12px;
+    margin: 6px 0;
+    border-radius: 10px; /* Matching the screenshot's soft corners */
     border: none;
     font-weight: bold;
     color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
 }
-.btn-real { background-color: #007bff; }
-.btn-main { background-color: #dc3545; }
+
+.btn-real { background-color: #007bff; } /* Blue as seen in image */
+.btn-main { background-color: #dc3545; } /* Red as seen in image */
+
+.audio-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+    max-width: 320px;
+    margin-top: 10px;
+}
+
+.audio-row .btn-sub {
+    flex: 1;
+    background: white !important;
+    color: #333;
+    border: 1px solid #999;
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
 
 /* QUIZ OPTIONS */
 #quiz-options {
@@ -226,4 +259,79 @@ body {
     margin-bottom: 5px;
     min-height: 1.6em;
     /* your existing styles for color and alignment */
+}
+
+/* The invisible wrapper that positions the modal */
+#help-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;      /* Adjust this to 100% if you want it to fill the whole screen */
+    max-width: 600px;
+    height: 80vh;    /* Fixed height so it scrolls internally */
+    z-index: 1000;
+    background: transparent;
+}
+
+#lang-text, #phonetic-text, #english-text {
+    min-height: 1.5em; /* Keeps the layout stable when text disappears */
+    margin-bottom: 5px;
+}
+
+/* The actual Black Box that fills the wrapper */
+#help-content {
+    background-color: #121212; 
+    color: #e0e0e0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    border: 1px solid #444;
+    box-sizing: border-box; /* Crucial: includes padding in width/height */
+    padding: 0;             /* We will put padding on the inner sections instead */
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.9);
+}
+
+/* Color coding for the German text and Help pages */
+.hour-text { color: #007bff; font-weight: bold; }   /* Blue for Hours */
+.minute-text { color: #dc3545; font-weight: bold; } /* Red for Minutes */
+.second-text { color: #28a745; font-weight: bold; } /* Green for Seconds */
+
+/* The floating close button stays at the top right */
+/* Floating Close Button inside the Black Box */
+.close-help-btn {
+    position: sticky;
+    top: 10px;      /* Distance from the top of the scrollable area */
+    right: 10px;    /* Distance from the right edge */
+    float: right;   /* Keeps it aligned to the right */
+    background: #dc3545; /* Red accent color */
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    cursor: pointer;
+    z-index: 1001; /* Ensures it stays above the table content */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: background 0.2s ease;
+}
+
+.close-help-btn:hover {
+    background: #c82333;
+}
+
+/* Ensure the title doesn't get overlapped by the floating button */
+#help-content h2 {
+    clear: both;
+    padding-top: 5px;
+}
+
+/* Body container to ensure content doesn't hide under the sticky button */
+.help-scroll-body {
+    clear: both;
+    padding-top: 5px;
 }
