@@ -1,4 +1,4 @@
-const APP_VERSION = "101"; // Increment this whenever you change your code
+const APP_VERSION = "german-clock-v101"; // Increment this whenever you change your code
 // 1. Global State
 let hours = 12, minutes = 0, seconds = 0, isQuiz = false, isRevealed = true, currentLang = 'EN', showPh = true, showSec = false;
 let isLive = true;
