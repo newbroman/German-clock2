@@ -248,15 +248,28 @@ function generateQuizOptions() {
 function getCorrectStr(h, m, formal) {
     if (formal) {
         let mStr = m === 0 ? "" : mAll[m];
-        let mCard = m > 0 ? ` <span class="cardinal-num">${mStr}</span>` : "";
-        return `Es ist <span class="nom-case">${hNom[h]}</span> Uhr${mCard}`.trim();
+        // Blue for Hour, Red for Minute
+        let mCard = m > 0 ? ` <span class="minute-text">${mStr}</span>` : "";
+        return `Es ist <span class="hour-text">${hNom[h]}</span> Uhr${mCard}`.trim();
     } else {
         let h12 = h % 12;
         let nextH = (h + 1) % 12 || 12;
-        if (m === 0) return `Es ist <span class="nom-case">${hNom[h % 12 || 12]}</span> Uhr`;
-        if (m < 30) return `<span class="cardinal-num">${mAll[m]}</span> nach <span class="nom-case">${hNom[h12 || 12]}</span>`;
-        if (m === 30) return `halb <span class="nom-case">${hNom[nextH]}</span>`;
-        return `<span class="cardinal-num">${mAll[60-m]}</span> vor <span class="nom-case">${hNom[nextH]}</span>`;
+        let displayH = h12 || 12;
+
+        if (m === 0) {
+            let spec = h === 0 ? "Mitternacht" : h === 12 ? "Mittag" : hNom[displayH];
+            return `Es ist <span class="hour-text">${spec}</span>`;
+        }
+        if (m < 30) {
+            // Using Red for minutes and Blue for hours
+            return `<span class="minute-text">${mAll[m]}</span> nach <span class="hour-text">${hNom[displayH]}</span>`;
+        }
+        if (m === 30) {
+            // Half uses the NEXT hour (Blue)
+            return `halb <span class="hour-text">${hNom[nextH]}</span>`;
+        }
+        // "Vor" logic (Red for remaining minutes, Blue for next hour)
+        return `<span class="minute-text">${mAll[60-m]}</span> vor <span class="hour-text">${hNom[nextH]}</span>`;
     }
 }
 
