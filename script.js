@@ -1,18 +1,17 @@
-
+const APP_VERSION = "german-clock-v105"; // Increment this whenever you change your code
 // 1. Global State
 let hours = 12, minutes = 0, seconds = 0, isQuiz = false, isRevealed = true, currentLang = 'EN', showPh = true, showSec = false;
 let isLive = true;
 
 // 2. Data Sets (German)
 const hNom = ["Mitternacht", "eins", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn", "elf", "zwölf", "dreizehn", "vierzehn", "fünfzehn", "sechzehn", "siebzehn", "achtzehn", "neunzehn", "zwanzig", "einundzwanzig", "zweiundzwanzig", "dreiundzwanzig"];
-const hNomPh = ["mit-ter-nakht", "ayns", "tsway", "dray", "feer", "fuenf", "zeks", "zee-ben", "akht", "noyn", "tsayn", "elf", "tsveulf", "dray-tsayn", "feer-tsayn", "fuenf-tsayn", "zeks-tsayn", "zeeb-tsayn", "akht-tsayn", "noyn-tsayn", "tsvan-tsig", "ayn-unt-tsvan-tsig", "tsvay-unt-tsvan-tsig", "dray-unt-tsvan-tsig"];
-const mAll = ["null", "eins", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn", "elf", "zwölf", "trzynaście", "vierzehn", "fünfzehn", "sechzehn", "siebzehn", "achtzehn", "neunzehn", "zwanzig", "einundzwanzig", "zweiundzwanzig", "dreiundzwanzig", "vierundzwanzig", "fünfundzwanzig", "sechsundzwanzig", "siebenundzwanzig", "achtundzwanzig", "neunundzwanzig", "dreißig", "einunddreißig", "zweiunddreißig", "dreiunddreißig", "vierunddreißig", "fünfunddreißig", "sechsunddreißig", "siebenunddreißig", "achtunddreißig", "neununddreißig", "vierzig", "einundvierzig", "zweiundvierzig", "dreiundvierzig", "vierundvierzig", "fünfundvierzig", "sechsundvierzig", "siebenundvierzig", "achtundvierzig", "neunundvierzig", "fünfzig", "einundfünfzig", "zweiundfünfzig", "dreiundfünfzig", "vierundfünfzig", "fünfundfünfzig", "sechsundfünfzig", "siebenundfünfzig", "achtundfünfzig", "neunundfünfzig"];
-const mAllPh = ["null", "ayns", "tsway", "dray", "feer", "fuenf", "zeks", "zee-ben", "akht", "noyn", "tsayn", "elf", "tsveulf", "dray-tsayn", "feer-tsayn", "fuenf-tsayn", "zeks-tsayn", "zeeb-tsayn", "akht-tsayn", "noyn-tsayn", "tsvan-tsig", "ayn-unt-tsvan-tsig", "tsvay-unt-tsvan-tsig", "dray-unt-tsvan-tsig", "feer-unt-tsvan-tsig", "fuenf-unt-tsvan-tsig", "zeks-unt-tsvan-tsig", "zeeb-unt-tsvan-tsig", "akht-unt-tsvan-tsig", "noyn-unt-tsvan-tsig", "dray-sig", "ayn-unt-dray-sig", "tsvay-unt-dray-sig", "dray-unt-dray-sig", "feer-unt-dray-sig", "fuenf-unt-dray-sig", "zeks-unt-dray-sig", "zeeb-unt-dray-sig", "akht-unt-dray-sig", "noyn-unt-dray-sig", "feer-tsig", "ayn-unt-feer-tsig", "tsvay-unt-feer-tsig", "dray-unt-feer-tsig", "feer-unt-feer-tsig", "fuenf-unt-feer-tsig", "zeks-unt-feer-tsig", "zeeb-unt-feer-tsig", "akht-unt-feer-tsig", "noyn-unt-feer-tsig", "fuenf-tsig", "ayn-unt-fuenf-tsig", "tsvay-unt-fuenf-tsig", "dray-unt-fuenf-tsig", "feer-unt-fuenf-tsig", "fuenf-unt-fuenf-tsig", "zeks-unt-fuenf-tsig", "zeeb-unt-fuenf-tsig", "akht-unt-fuenf-tsig", "noyn-unt-fuenf-tsig"];
 
-const dict = {
-    EN: { title: "Say the Time in German", actual: "ACTUAL TIME", random: "RANDOM TIME", listen: "🔊 LISTEN", slow: "½ SPEED", ask: "How do you say?", reveal: "REVEAL", close: "Close Help", qOn: "Quiz: ON", qOff: "Quiz: OFF" },
-    DE: { title: "Sag die Uhrzeit auf Deutsch", actual: "AKTUELL", random: "ZUFALL", listen: "🔊 HÖREN", slow: "½ TEMPO", ask: "Wie sagt man?", reveal: "ZEIGEN", close: "Schließen", qOn: "Quiz: AN", qOff: "Quiz: AUS" }
-};
+const hNomPh = ["mit-ter-nakht", "ayns", "tsway", "dray", "feer", "fuenf", "zeks", "zee-ben", "akht", "noyn", "tsayn", "elf", "tsveulf", "dray-tsayn", "feer-tsayn", "fuenf-tsayn", "zeks-tsayn", "zeeb-tsayn", "akht-tsayn", "noyn-tsayn", "tsvan-tsikh", "ayn-oont-tsvan-tsikh", "tsvay-oont-tsvan-tsikh", "dray-oont-tsvan-tsikh"];
+
+const mAll = ["null", "eins", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn", "elf", "zwölf", "dreizehn", "vierzehn", "fünfzehn", "sechzehn", "siebzehn", "achtzehn", "neunzehn", "zwanzig", "einundzwanzig", "zweiundzwanzig", "dreiundzwanzig", "vierundzwanzig", "fünfundzwanzig", "sechsundzwanzig", "siebenundzwanzig", "achtundzwanzig", "neunundzwanzig", "dreißig", "einunddreißig", "zweiunddreißig", "dreiunddreißig", "vierunddreißig", "fünfunddreißig", "sechsunddreißig", "siebenunddreißig", "achtunddreißig", "neununddreißig", "vierzig", "einundvierzig", "zweiundvierzig", "dreiundvierzig", "vierundvierzig", "fünfundvierzig", "sechsundvierzig", "siebenundvierzig", "achtundvierzig", "neunundvierzig", "fünfzig", "einundfünfzig", "zweiundfünfzig", "dreiundfünfzig", "vierundfünfzig", "fünfundfünfzig", "sechsundfünfzig", "siebenundfünfzig", "achtundfünfzig", "neunundfünfzig"];
+
+const mAllPh = ["nool", "ayns", "tsvay", "dray", "feer", "fuenf", "zeks", "zee-ben", "akht", "noyn", "tsayn", "elf", "tsveulf", "dray-tsayn", "feer-tsayn", "fuenf-tsayn", "zekh-tsayn", "zeeb-tsayn", "akht-tsayn", "noyn-tsayn", "tsvan-tsikh", "ayn-oont-tsvan-tsikh", "tsvay-oont-tsvan-tsikh", "dray-oont-tsvan-tsikh", "feer-oont-tsvan-tsikh", "fuenf-oont-tsvan-tsikh", "zeks-oont-tsvan-tsikh", "zeeb-oont-tsvan-tsikh", "akht-oont-tsvan-tsikh", "noyn-oont-tsvan-tsikh", "dray-sikh", "ayn-oont-dray-sikh", "tsvay-oont-dray-sikh", "dray-oont-dray-sikh", "feer-oont-dray-sikh", "fuenf-oont-dray-sikh", "zeks-oont-dray-sikh", "zeeb-oont-dray-sikh", "akht-oont-dray-sikh", "noyn-oont-dray-sikh", "feer-tsikh", "ayn-oont-feer-tsikh", "tsvay-oont-feer-tsikh", "dray-oont-feer-tsikh", "feer-oont-feer-tsikh", "fuenf-oont-feer-tsikh", "zeks-oont-feer-tsikh", "zeeb-oont-feer-tsikh", "akht-oont-feer-tsikh", "noyn-oont-feer-tsikh", "fuenf-tsikh", "ayn-oont-fuenf-tsikh", "tsvay-oont-fuenf-tsikh", "dray-oont-fuenf-tsikh", "feer-oont-fuenf-tsikh", "fuenf-oont-fuenf-tsikh", "zeks-oont-fuenf-tsikh", "zeeb-oont-fuenf-tsikh", "akht-oont-fuenf-tsikh", "noyn-oont-fuenf-tsikh"];
+const dict = { EN: { title: "Say the Time in German", actual: "ACTUAL TIME", random: "RANDOM TIME", listen: "🔊 LISTEN", slow: "½ SPEED", ask: "How do you say?", reveal: "REVEAL", close: "Close Help", qOn: "Quiz: ON", qOff: "Quiz: OFF" },    DE: { title: "Sag die Uhrzeit auf Deutsch", actual: "AKTUELL", random: "ZUFALL", listen: "🔊 HÖREN", slow: "½ TEMPO", ask: "Wie sagt man?", reveal: "ZEIGEN", close: "Schließen", qOn: "Quiz: AN", qOff: "Quiz: AUS" }};
 
 // Utility
 const pad = (n) => n.toString().padStart(2, '0');
@@ -69,14 +68,26 @@ function updateDisplay(syncInput) {
     // 2. German Grammar Logic
     const isFormal = document.getElementById('formal').checked;
     let p = "", ph = "", e = "";
-    let sStr = (showSec && seconds > 0) ? ` und <span class="cardinal-num">${mAll[seconds]}</span> Sekunden` : "";
+    if (isFormal) {
+        e = `It is ${hours}:${pad(minutes)}`;
+    } else {
+        let h12 = hours % 12 || 12;
+        let nextH = (hours + 1) % 12 || 12;
+        if (minutes === 0) e = `It's ${h12} o'clock`;
+        else if (minutes <= 30) e = `${minutes} past ${h12}`;
+        else e = `${60 - minutes} to ${nextH}`;
+    }
+    
+    // Seconds string (Green)
+    let sStr = (showSec && seconds > 0) ? ` und <span class="second-text">${mAll[seconds]}</span> Sekunden` : "";
+    let sPh = (showSec && seconds > 0) ? ` oont ${mAllPh[seconds]} ze-koon-den` : "";
 
     if (isFormal) {
-        let mStr = minutes === 0 ? "" : mAll[minutes];
-        let mCard = minutes > 0 ? ` <span class="cardinal-num">${mStr}</span>` : "";
-        p = `Es ist <span class="nom-case">${hNom[hours]}</span> Uhr${mCard}${sStr}`;
-        ph = `es ist ${hNomPh[hours]} oor ${mAllPh[minutes]}`;
-        e = `${pad(hours)}:${pad(minutes)}`;
+        let mCard = minutes > 0 ? ` <span class="minute-text">${mAll[minutes]}</span>` : "";
+        let mPh = minutes > 0 ? ` ${mAllPh[minutes]}` : "";
+        
+        p = `Es ist <span class="hour-text">${hNom[hours]}</span> Uhr${mCard}${sStr}`;
+        ph = `es ist ${hNomPh[hours]} oor${mPh}${sPh}`;
     } else {
         let h12 = hours % 12;
         let nextH = (hours + 1) % 12 || 12;
@@ -84,27 +95,26 @@ function updateDisplay(syncInput) {
 
         if (minutes === 0) {
             let spec = hours === 0 ? "Mitternacht" : hours === 12 ? "Mittag" : hNom[h12];
-            p = `Es ist <span class="nom-case">${spec}</span>${sStr}`;
-            ph = `es ist ${hNomPh[h12]}`;
-            e = hours === 0 ? "Midnight" : hours === 12 ? "Noon" : `${displayH} o'clock`;
-        } else if (minutes < 30) {
-            // [cite: 2026-01-10] No kwadrans/Viertel
-            p = `<span class="cardinal-num">${mAll[minutes]}</span> nach <span class="nom-case">${hNom[h12]}</span>${sStr}`;
-            ph = `${mAllPh[minutes]} nakh ${hNomPh[h12]}`;
-            e = `${minutes} past ${displayH}`;
-        } else if (minutes === 30) {
-            p = `halb <span class="nom-case">${hNom[nextH]}</span>${sStr}`;
-            ph = `halp ${hNomPh[nextH]}`;
-            e = `Half past ${displayH}`;
+            let specPh = hours === 0 ? "mit-ter-nakht" : hours === 12 ? "mit-tahk" : hNomPh[h12];
+            p = `Es ist <span class="hour-text">${spec}</span>${sStr}`;
+            ph = `es ist ${specPh}${sPh}`;
+        } else if (minutes <= 30) {
+            if (minutes === 30) {
+                p = `halb <span class="hour-text">${hNom[nextH]}</span>${sStr}`;
+                ph = `halp ${hNomPh[nextH]}${sPh}`;
+            } else {
+                // Using 'fünfzehn' for 15 [cite: 2026-01-10]
+                p = `<span class="minute-text">${mAll[minutes]}</span> nach <span class="hour-text">${hNom[displayH]}</span>${sStr}`;
+                ph = `${mAllPh[minutes]} nakh ${hNomPh[displayH]}${sPh}`;
+            }
         } else {
             let d = 60 - minutes;
-            p = `<span class="cardinal-num">${mAll[d]}</span> vor <span class="nom-case">${hNom[nextH]}</span>${sStr}`;
-            ph = `${mAllPh[d]} for ${hNomPh[nextH]}`;
-            e = `${d} to ${nextH}`;
+            p = `<span class="minute-text">${mAll[d]}</span> vor <span class="hour-text">${hNom[nextH]}</span>${sStr}`;
+            ph = `${mAllPh[d]} for ${hNomPh[nextH]}${sPh}`;
         }
     }
 
-    // 3. UI Update (Using generic ID 'lang-text')
+    // 3. UI Update
     const d = dict[currentLang];
     const pt = document.getElementById('lang-text'); 
     const pht = document.getElementById('phonetic-text');
@@ -122,12 +132,12 @@ function updateDisplay(syncInput) {
         et.innerText = e;
     }
 }
-
 function startDrag(e) {
     isLive = false;
     e.preventDefault();
     const clock = document.getElementById('clock-container');
     const move = (ev) => {
+        if (isQuiz) isRevealed = false;
         const rect = clock.getBoundingClientRect();
         const cx = ev.touches ? ev.touches[0].clientX : ev.clientX;
         const cy = ev.touches ? ev.touches[0].clientY : ev.clientY;
@@ -170,7 +180,7 @@ function rollTime() {
     hours = Math.floor(Math.random() * 24);
     minutes = Math.floor(Math.random() * 60);
     seconds = 0;
-    isRevealed = !isQuiz;
+    isRevealed = isQuiz ? false : true;
     updateDisplay(true);
     if (isQuiz) generateQuizOptions();
 }
@@ -244,21 +254,34 @@ function generateQuizOptions() {
 function getCorrectStr(h, m, formal) {
     if (formal) {
         let mStr = m === 0 ? "" : mAll[m];
-        let mCard = m > 0 ? ` <span class="cardinal-num">${mStr}</span>` : "";
-        return `Es ist <span class="nom-case">${hNom[h]}</span> Uhr${mCard}`.trim();
+        // Blue for Hour, Red for Minute
+        let mCard = m > 0 ? ` <span class="minute-text">${mStr}</span>` : "";
+        return `Es ist <span class="hour-text">${hNom[h]}</span> Uhr${mCard}`.trim();
     } else {
         let h12 = h % 12;
         let nextH = (h + 1) % 12 || 12;
-        if (m === 0) return `Es ist <span class="nom-case">${hNom[h % 12 || 12]}</span> Uhr`;
-        if (m < 30) return `<span class="cardinal-num">${mAll[m]}</span> nach <span class="nom-case">${hNom[h12 || 12]}</span>`;
-        if (m === 30) return `halb <span class="nom-case">${hNom[nextH]}</span>`;
-        return `<span class="cardinal-num">${mAll[60-m]}</span> vor <span class="nom-case">${hNom[nextH]}</span>`;
+        let displayH = h12 || 12;
+
+        if (m === 0) {
+            let spec = h === 0 ? "Mitternacht" : h === 12 ? "Mittag" : hNom[displayH];
+            return `Es ist <span class="hour-text">${spec}</span>`;
+        }
+        if (m < 30) {
+            // Using Red for minutes and Blue for hours
+            return `<span class="minute-text">${mAll[m]}</span> nach <span class="hour-text">${hNom[displayH]}</span>`;
+        }
+        if (m === 30) {
+            // Half uses the NEXT hour (Blue)
+            return `halb <span class="hour-text">${hNom[nextH]}</span>`;
+        }
+        // "Vor" logic (Red for remaining minutes, Blue for next hour)
+        return `<span class="minute-text">${mAll[60-m]}</span> vor <span class="hour-text">${hNom[nextH]}</span>`;
     }
 }
 
 function manualTime(val) {
     isLive = false; // Stop auto-syncing with system time
-    
+    if (isQuiz) isRevealed = false;
     // Remove anything that isn't a number
     let digits = val.replace(/\D/g, '');
     
@@ -316,4 +339,17 @@ function toggleLang() {
     document.getElementById('btn-slow').innerText = d.slow;
     document.getElementById('quiz-toggle').innerText = isQuiz ? d.qOn : d.qOff;
     updateDisplay(true);
+}
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    // Note the leading slash and the exact repository name
+    navigator.serviceWorker.register('/German-clock2/sw.js')
+      .then(registration => {
+        console.log('Service Worker registered with scope:', registration.scope);
+      })
+      .catch(error => {
+        console.error('Service Worker registration failed:', error);
+      });
+  });
 }
