@@ -1,5 +1,5 @@
 // 1. Updated Cache Name to match your German project
-const CACHE_NAME = 'german-clock-v103'; 
+const CACHE_NAME = 'german-clock-v105'; 
 const GH_PATH = '/German-clock2'; 
 
 const ASSETS = [
