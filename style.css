@@ -181,7 +181,7 @@ body {
 .setting-row {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 80px;
     margin: 15px 0;
     font-family: sans-serif;
 }
@@ -289,6 +289,11 @@ body {
     position: relative;
     box-shadow: 0 15px 50px rgba(0,0,0,0.9);
 }
+
+/* Color coding for the German text and Help pages */
+.hour-text { color: #007bff; font-weight: bold; }   /* Blue for Hours */
+.minute-text { color: #dc3545; font-weight: bold; } /* Red for Minutes */
+.second-text { color: #28a745; font-weight: bold; } /* Green for Seconds */
 
 /* The floating close button stays at the top right */
 /* Floating Close Button inside the Black Box */
