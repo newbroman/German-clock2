@@ -171,7 +171,7 @@ function rollTime() {
     hours = Math.floor(Math.random() * 24);
     minutes = Math.floor(Math.random() * 60);
     seconds = 0;
-    isRevealed = !isQuiz;
+    isRevealed = isQuiz ? false : true;
     updateDisplay(true);
     if (isQuiz) generateQuizOptions();
 }
