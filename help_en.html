@@ -34,8 +34,9 @@
     .hour-text { color: #007bff; font-weight: bold; }   /* Blue - Hours */
     .second-text { color: #28a745; font-weight: bold; } /* Green - Seconds */
 
-    .help-sect { margin-bottom: 25px; }
-    h3 { border-left: 4px solid #007bff; padding-left: 10px; margin-top: 20px; font-size: 1.1rem; }
+    .help-sect { margin-bottom: 30px; }
+    h3 { border-left: 4px solid #007bff; padding-left: 10px; margin-top: 25px; font-size: 1.2rem; }
+    ul li { margin-bottom: 10px; line-height: 1.4; }
 
     @media (prefers-color-scheme: light) {
         #help-content { background-color: #ffffff; color: #333333; }
@@ -45,89 +46,87 @@
 
 <div id="help-content">
     <div class="help-inner">
-        <h2 class="help-header-title">App Guide</h2>
+        <h2 class="help-header-title">German Time: App Guide</h2>
 
         <div class="help-sect">
-            <h3>📱 How to Use</h3>
+            <h3>📱 App Controls</h3>
             <ul>
-                <li><b>Startup State:</b> <span class="hour-text">Casual mode</span> (12h) is the default at startup. [cite: 2026-01-13, 2026-01-17]</li>
-                <li><b>No "Viertel":</b> We strictly use <span class="minute-text">fünfzehn</span> (15) for quarters. [cite: 2026-01-10]</li>
-                <li><b>Drag the Hands:</b> Manually change the time by rotating the clock hands.</li>
-                <li><b>Manual Entry:</b> Type a specific time into the digital display box.</li>
-                <li><b>Quiz Mode:</b> Select the correct German phrase. <span class="second-text">Green</span> indicates success.</li>
+                <li><b>Startup Mode:</b> The app starts in <span class="hour-text">Casual Mode</span> (12h) by default. [cite: 2026-01-13]</li>
+                <li><b>The "15" Rule:</b> We never use "Viertel" or "kwadrans." We only use <span class="minute-text">fünfzehn</span>. [cite: 2026-01-10]</li>
+                <li><b>Interactive Hands:</b> Drag the clock hands to change the time instantly.</li>
+                <li><b>Digital Input:</b> You can type a time (HH:MM) directly into the display box.</li>
+                <li><b>Quiz Mode:</b> Test yourself! Pick the correct German phrase for the time shown.</li>
             </ul>
         </div>
 
         <div class="help-sect">
-            <h3>👔 Formal Grammar (24h)</h3>
-            <p>Format: <span class="hour-text">Hour</span> + <b>"Uhr"</b> + <span class="minute-text">Minute</span> + <span class="second-text">Seconds</span>.</p>
+            <h3>👔 Formal Time (24-Hour System)</h3>
+            <p>Used for official announcements, flights, and television. It is very straightforward.</p>
+            <p><b>Structure:</b> <span class="hour-text">Hour (0-23)</span> + <b>"Uhr"</b> + <span class="minute-text">Minute (1-59)</span></p>
             <table>
                 <thead>
                     <tr>
-                        <th>Time</th>
-                        <th>Example Phrase</th>
+                        <th>Digital</th>
+                        <th>Spoken Phrase</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>08:00</td><td><span class="hour-text">acht</span> Uhr</td></tr>
+                    <tr><td>09:00</td><td><span class="hour-text">neun</span> Uhr</td></tr>
                     <tr><td>13:10</td><td><span class="hour-text">dreizehn</span> Uhr <span class="minute-text">zehn</span></td></tr>
-                    <tr><td>17:15:05</td><td><span class="hour-text">siebzehn</span> Uhr <span class="minute-text">fünfzehn</span> und <span class="second-text">fünf</span> Sekunden</td></tr>
-                    <tr><td>20:45</td><td><span class="hour-text">zwanzig</span> Uhr <span class="minute-text">fünfundvierzig</span></td></tr>
+                    <tr><td>15:15</td><td><span class="hour-text">fünfzehn</span> Uhr <span class="minute-text">fünfzehn</span></td></tr>
+                    <tr><td>18:30</td><td><span class="hour-text">achtzehn</span> Uhr <span class="minute-text">dreißig</span></td></tr>
+                    <tr><td>22:45</td><td><span class="hour-text">zweiundzwanzig</span> Uhr <span class="minute-text">fünfundvierzig</span></td></tr>
+                    <tr><td>00:05:10</td><td><span class="hour-text">null</span> Uhr <span class="minute-text">fünf</span> and <span class="second-text">zehn</span> seconds</td></tr>
                 </tbody>
             </table>
         </div>
 
         <div class="help-sect">
-            <h3>☕ Casual Grammar (12h)</h3>
-            <p>German "looks forward" to the next hour starting at the half-hour mark.</p>
+            <h3>☕ Casual / Spoken Time (12-Hour System)</h3>
+            <p>This is what you'll hear in conversation. Note: At the 30-minute mark (<b>halb</b>), Germans look forward to the next hour!</p>
             <table>
                 <thead>
                     <tr>
-                        <th>Structure</th>
-                        <th>Preposition</th>
-                        <th>Example</th>
+                        <th>Minutes</th>
+                        <th>Logic</th>
+                        <th>Example (Time: 04:xx)</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>On the Hour</td><td>—</td><td><span class="hour-text">Vier</span> Uhr (4:00)</td></tr>
-                    <tr><td>5 Past</td><td><b>nach</b></td><td><span class="minute-text">fünf</span> nach <span class="hour-text">vier</span> (4:05)</td></tr>
-                    <tr><td>15 Past</td><td><b>nach</b></td><td><span class="minute-text">fünfzehn</span> nach <span class="hour-text">vier</span> (4:15) [cite: 2026-01-10]</td></tr>
-                    <tr><td>Halfway TO</td><td><b>halb</b></td><td>halb <span class="hour-text">fünf</span> (4:30) <i>(Means 4:30)</i></td></tr>
-                    <tr><td>10 To</td><td><b>vor</b></td><td><span class="minute-text">zehn</span> vor <span class="hour-text">fünf</span> (4:50)</td></tr>
+                    <tr><td>:00</td><td>On the hour</td><td><span class="hour-text">Vier</span> Uhr</td></tr>
+                    <tr><td>:05</td><td>5 past</td><td><span class="minute-text">fünf</span> nach <span class="hour-text">vier</span></td></tr>
+                    <tr><td>:15</td><td>15 past</td><td><span class="minute-text">fünfzehn</span> nach <span class="hour-text">vier</span> [cite: 2026-01-10]</td></tr>
+                    <tr><td>:20</td><td>20 past</td><td><span class="minute-text">zwanzig</span> nach <span class="hour-text">vier</span></td></tr>
+                    <tr><td>:30</td><td>Half (Next Hour!)</td><td>halb <span class="hour-text">fünf</span> <i>(meaning 4:30)</i></td></tr>
+                    <tr><td>:40</td><td>20 to</td><td><span class="minute-text">zwanzig</span> vor <span class="hour-text">fünf</span></td></tr>
+                    <tr><td>:45</td><td>15 to</td><td><span class="minute-text">fünfzehn</span> vor <span class="hour-text">fünf</span></td></tr>
+                    <tr><td>:55</td><td>5 to</td><td><span class="minute-text">fünf</span> vor <span class="hour-text">fünf</span></td></tr>
                 </tbody>
             </table>
         </div>
 
         <div class="help-sect">
-            <h3>☀️ Time of Day</h3>
-            <table>
-                <thead>
-                    <tr><th>Range</th><th>Phrase</th><th>Meaning</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>04:00 – 09:00</td><td><b>morgens</b></td><td>in the morning</td></tr>
-                    <tr><td>10:00 – 12:00</td><td><b>vormittags</b></td><td>late morning</td></tr>
-                    <tr><td>13:00 – 18:00</td><td><b>nachmittags</b></td><td>in the afternoon</td></tr>
-                    <tr><td>19:00 – 23:00</td><td><b>abends</b></td><td>in the evening</td></tr>
-                    <tr><td>00:00 – 03:00</td><td><b>nachts</b></td><td>at night</td></tr>
-                </tbody>
-            </table>
+            <h3>☀️ Times of Day</h3>
+            <p>Since Casual time only uses 1-12, these words are often added for clarity:</p>
+            <ul>
+                <li><b>morgens:</b> Morning (05:00 - 09:00)</li>
+                <li><b>vormittags:</b> Late morning (09:00 - 12:00)</li>
+                <li><b>mittags:</b> Noon (12:00 - 13:00)</li>
+                <li><b>nachmittags:</b> Afternoon (13:00 - 18:00)</li>
+                <li><b>abends:</b> Evening (18:00 - 23:00)</li>
+                <li><b>nachts:</b> Night (23:00 - 05:00)</li>
+            </ul>
         </div>
 
         <div class="help-sect">
-            <h3>🔢 Number Reference</h3>
+            <h3>🔢 Full Number List (0-23)</h3>
             <details open>
                 <summary style="cursor: pointer; padding: 10px; background: rgba(128,128,128,0.1); border-radius: 5px; font-weight: bold;">
-                    Full Number List (0-23)
+                    Click to see all hours
                 </summary>
                 <table>
                     <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Formal (<span class="hour-text">Hour</span>)</th>
-                            <th>Casual (<span class="hour-text">Hour</span>)</th>
-                            <th>Pronunciation</th>
-                        </tr>
+                        <tr><th>#</th><th>Formal (<span class="hour-text">Hour</span>)</th><th>Casual (<span class="hour-text">Hour</span>)</th><th>Pronunciation</th></tr>
                     </thead>
                     <tbody>
                         <tr><td>0</td><td class="hour-text">null</td><td class="hour-text">Mitternacht</td><td>mit-ter-nakht</td></tr>
@@ -142,7 +141,7 @@
                         <tr><td>9</td><td class="hour-text">neun</td><td class="hour-text">neun</td><td>noyn</td></tr>
                         <tr><td>10</td><td class="hour-text">zehn</td><td class="hour-text">zehn</td><td>tsayn</td></tr>
                         <tr><td>11</td><td class="hour-text">elf</td><td class="hour-text">elf</td><td>elf</td></tr>
-                        <tr><td>12</td><td class="hour-text">zwölf</td><td class="hour-text">zwölf / Mittag</td><td>tsveulf</td></tr>
+                        <tr><td>12</td><td class="hour-text">zwölf</td><td class="hour-text">Mittag</td><td>tsveulf</td></tr>
                         <tr><td>13</td><td class="hour-text">dreizehn</td><td class="hour-text">eins</td><td>dray-tsayn</td></tr>
                         <tr><td>14</td><td class="hour-text">vierzehn</td><td class="hour-text">zwei</td><td>feer-tsayn</td></tr>
                         <tr><td>15</td><td class="hour-text">fünfzehn</td><td class="hour-text">drei</td><td>fuenf-tsayn</td></tr>
