@@ -320,3 +320,16 @@ function toggleLang() {
     document.getElementById('quiz-toggle').innerText = isQuiz ? d.qOn : d.qOff;
     updateDisplay(true);
 }
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    // Note the leading slash and the exact repository name
+    navigator.serviceWorker.register('/German-clock2/sw.js')
+      .then(registration => {
+        console.log('Service Worker registered with scope:', registration.scope);
+      })
+      .catch(error => {
+        console.error('Service Worker registration failed:', error);
+      });
+  });
+}
