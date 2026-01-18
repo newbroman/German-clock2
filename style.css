@@ -275,6 +275,11 @@ body {
     background: transparent;
 }
 
+#lang-text, #phonetic-text, #english-text {
+    min-height: 1.5em; /* Keeps the layout stable when text disappears */
+    margin-bottom: 5px;
+}
+
 /* The actual Black Box that fills the wrapper */
 #help-content {
     background-color: #121212; 
