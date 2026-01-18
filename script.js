@@ -1,4 +1,4 @@
-const APP_VERSION = "german-clock-v101"; // Increment this whenever you change your code
+const APP_VERSION = "german-clock-v102"; // Increment this whenever you change your code
 // 1. Global State
 let hours = 12, minutes = 0, seconds = 0, isQuiz = false, isRevealed = true, currentLang = 'EN', showPh = true, showSec = false;
 let isLive = true;
@@ -72,14 +72,13 @@ function updateDisplay(syncInput) {
     // 2. German Grammar Logic
     const isFormal = document.getElementById('formal').checked;
     let p = "", ph = "", e = "";
-    let sStr = (showSec && seconds > 0) ? ` und <span class="cardinal-num">${mAll[seconds]}</span> Sekunden` : "";
+    
+    // Seconds string with Green color
+    let sStr = (showSec && seconds > 0) ? ` und <span class="second-text">${mAll[seconds]}</span> Sekunden` : "";
 
     if (isFormal) {
-        let mStr = minutes === 0 ? "" : mAll[minutes];
-        let mCard = minutes > 0 ? ` <span class="cardinal-num">${mStr}</span>` : "";
-        p = `Es ist <span class="nom-case">${hNom[hours]}</span> Uhr${mCard}${sStr}`;
-        ph = `es ist ${hNomPh[hours]} oor ${mAllPh[minutes]}`;
-        e = `${pad(hours)}:${pad(minutes)}`;
+        let mCard = minutes > 0 ? ` <span class="minute-text">${mAll[minutes]}</span>` : "";
+        p = `Es ist <span class="hour-text">${hNom[hours]}</span> Uhr${mCard}${sStr}`;
     } else {
         let h12 = hours % 12;
         let nextH = (hours + 1) % 12 || 12;
@@ -87,23 +86,17 @@ function updateDisplay(syncInput) {
 
         if (minutes === 0) {
             let spec = hours === 0 ? "Mitternacht" : hours === 12 ? "Mittag" : hNom[h12];
-            p = `Es ist <span class="nom-case">${spec}</span>${sStr}`;
-            ph = `es ist ${hNomPh[h12]}`;
-            e = hours === 0 ? "Midnight" : hours === 12 ? "Noon" : `${displayH} o'clock`;
-        } else if (minutes < 30) {
-            // [cite: 2026-01-10] No kwadrans/Viertel
-            p = `<span class="cardinal-num">${mAll[minutes]}</span> nach <span class="nom-case">${hNom[h12]}</span>${sStr}`;
-            ph = `${mAllPh[minutes]} nakh ${hNomPh[h12]}`;
-            e = `${minutes} past ${displayH}`;
-        } else if (minutes === 30) {
-            p = `halb <span class="nom-case">${hNom[nextH]}</span>${sStr}`;
-            ph = `halp ${hNomPh[nextH]}`;
-            e = `Half past ${displayH}`;
+            p = `Es ist <span class="hour-text">${spec}</span>${sStr}`;
+        } else if (minutes <= 30) {
+            // Using 'fünfzehn' for 15 [cite: 2026-01-10]
+            let mPhrase = minutes === 30 ? "halb" : `${mAll[minutes]} nach`;
+            let hTarget = minutes === 30 ? nextH : h12;
+            
+            p = `<span class="minute-text">${mAll[minutes]}</span> nach <span class="hour-text">${hNom[h12]}</span>${sStr}`;
+            if(minutes === 30) p = `halb <span class="hour-text">${hNom[nextH]}</span>${sStr}`;
         } else {
             let d = 60 - minutes;
-            p = `<span class="cardinal-num">${mAll[d]}</span> vor <span class="nom-case">${hNom[nextH]}</span>${sStr}`;
-            ph = `${mAllPh[d]} for ${hNomPh[nextH]}`;
-            e = `${d} to ${nextH}`;
+            p = `<span class="minute-text">${mAll[d]}</span> vor <span class="hour-text">${hNom[nextH]}</span>${sStr}`;
         }
     }
 
