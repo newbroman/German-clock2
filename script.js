@@ -73,12 +73,16 @@ function updateDisplay(syncInput) {
     const isFormal = document.getElementById('formal').checked;
     let p = "", ph = "", e = "";
     
-    // Seconds string with Green color
+    // Seconds string (Green)
     let sStr = (showSec && seconds > 0) ? ` und <span class="second-text">${mAll[seconds]}</span> Sekunden` : "";
+    let sPh = (showSec && seconds > 0) ? ` oont ${mAllPh[seconds]} ze-koon-den` : "";
 
     if (isFormal) {
         let mCard = minutes > 0 ? ` <span class="minute-text">${mAll[minutes]}</span>` : "";
+        let mPh = minutes > 0 ? ` ${mAllPh[minutes]}` : "";
+        
         p = `Es ist <span class="hour-text">${hNom[hours]}</span> Uhr${mCard}${sStr}`;
+        ph = `es ist ${hNomPh[hours]} oor${mPh}${sPh}`;
     } else {
         let h12 = hours % 12;
         let nextH = (hours + 1) % 12 || 12;
@@ -86,21 +90,26 @@ function updateDisplay(syncInput) {
 
         if (minutes === 0) {
             let spec = hours === 0 ? "Mitternacht" : hours === 12 ? "Mittag" : hNom[h12];
+            let specPh = hours === 0 ? "mit-ter-nakht" : hours === 12 ? "mit-tahk" : hNomPh[h12];
             p = `Es ist <span class="hour-text">${spec}</span>${sStr}`;
+            ph = `es ist ${specPh}${sPh}`;
         } else if (minutes <= 30) {
-            // Using 'fünfzehn' for 15 [cite: 2026-01-10]
-            let mPhrase = minutes === 30 ? "halb" : `${mAll[minutes]} nach`;
-            let hTarget = minutes === 30 ? nextH : h12;
-            
-            p = `<span class="minute-text">${mAll[minutes]}</span> nach <span class="hour-text">${hNom[h12]}</span>${sStr}`;
-            if(minutes === 30) p = `halb <span class="hour-text">${hNom[nextH]}</span>${sStr}`;
+            if (minutes === 30) {
+                p = `halb <span class="hour-text">${hNom[nextH]}</span>${sStr}`;
+                ph = `halp ${hNomPh[nextH]}${sPh}`;
+            } else {
+                // Using 'fünfzehn' for 15 [cite: 2026-01-10]
+                p = `<span class="minute-text">${mAll[minutes]}</span> nach <span class="hour-text">${hNom[displayH]}</span>${sStr}`;
+                ph = `${mAllPh[minutes]} nakh ${hNomPh[displayH]}${sPh}`;
+            }
         } else {
             let d = 60 - minutes;
             p = `<span class="minute-text">${mAll[d]}</span> vor <span class="hour-text">${hNom[nextH]}</span>${sStr}`;
+            ph = `${mAllPh[d]} for ${hNomPh[nextH]}${sPh}`;
         }
     }
 
-    // 3. UI Update (Using generic ID 'lang-text')
+    // 3. UI Update
     const d = dict[currentLang];
     const pt = document.getElementById('lang-text'); 
     const pht = document.getElementById('phonetic-text');
@@ -118,7 +127,6 @@ function updateDisplay(syncInput) {
         et.innerText = e;
     }
 }
-
 function startDrag(e) {
     isLive = false;
     e.preventDefault();
