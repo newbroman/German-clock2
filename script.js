@@ -136,36 +136,51 @@ function startDrag(e) {
     isLive = false;
     e.preventDefault();
     const clock = document.getElementById('clock-container');
+    
     const move = (ev) => {
-        if (isQuiz) isRevealed = false;
         const rect = clock.getBoundingClientRect();
         const cx = ev.touches ? ev.touches[0].clientX : ev.clientX;
         const cy = ev.touches ? ev.touches[0].clientY : ev.clientY;
         const x = cx - rect.left - rect.width / 2;
         const y = cy - rect.top - rect.height / 2;
-        const angle = Math.atan2(y, x) * (180 / Math.PI) + 90;
+        
+        let angle = Math.atan2(y, x) * (180 / Math.PI) + 90;
         const norm = (angle < 0) ? angle + 360 : angle;
         const dist = Math.sqrt(x*x + y*y);
 
         if (dist < 35) {
-            let newH = Math.round(norm / 30) % 12;
-            if (hours >= 12) newH += 12;
-            hours = newH;
+            // Dragging the center/hour area
+            let newH12 = Math.round(norm / 30) % 12;
+            let currentIsPM = hours >= 12;
+            hours = currentIsPM ? newH12 + 12 : newH12;
         } else {
-            minutes = Math.round(norm / 6) % 60;
+            // Dragging the minute area
+            let newMinutes = Math.round(norm / 6) % 60;
+            
+            // Hour shifting logic: detect crossing the 12 o'clock mark
+            if (minutes > 45 && newMinutes < 15) {
+                hours = (hours + 1) % 24;
+            } else if (minutes < 15 && newMinutes > 45) {
+                hours = (hours - 1 + 24) % 24;
+            }
+            
+            minutes = newMinutes;
         }
         updateDisplay(true);
     };
+
     const stop = () => {
         window.removeEventListener('mousemove', move);
         window.removeEventListener('touchmove', move);
         if (isQuiz) generateQuizOptions();
     };
+
     window.addEventListener('mousemove', move);
     window.addEventListener('touchmove', move);
     window.addEventListener('mouseup', stop, {once:true});
     window.addEventListener('touchend', stop, {once:true});
 }
+
 
 function setRealTime() {
     isLive = true; 
